@@ -1,0 +1,115 @@
+{% extends "base.html.j2" %}
+{% block main %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="badge-pill">{{ icon("receipt", 16) }} {{ data.hero.badge }}</p>
+      <h1 id="hero-title">{{ data.hero.title_dark }} <span class="accent">{{ data.hero.title_red }}</span></h1>
+      <p class="lead">{{ data.hero.lead }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/lien-he/#dung-thu">Dùng thử {{ facts.trial.days }} ngày {{ icon("arrow-right", 18) }}</a>
+        <a class="btn btn-ghost" href="/bang-gia/">Xem bảng giá</a>
+      </div>
+      <p class="hero-note">{{ icon("circle-check", 18) }} {{ data.hero.note }}</p>
+    </div>
+    <div class="hero-visual">
+      {% include "_mockup.svg.j2" %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tru-cot">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{{ data.pillars.eyebrow }}</p>
+      <h2 id="tru-cot">{{ data.pillars.title }}</h2>
+      <p class="lead">{{ data.pillars.lead }}</p>
+    </div>
+    <div class="pillars">
+      {% for item in data.pillars["items"] %}
+      <article class="card">
+        <span class="card-icon">{{ icon(item.icon, 28) }}</span>
+        <h3><a class="stretched" href="{{ item.href }}">{{ item.title }}</a></h3>
+        <p>{{ item.text }}</p>
+        <span class="more" aria-hidden="true">Xem chi tiết {{ icon("arrow-right", 16) }}</span>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="so-sanh">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{{ data.compare.eyebrow }}</p>
+      <h2 id="so-sanh">{{ data.compare.title }}</h2>
+      <p class="lead">{{ data.compare.lead }}</p>
+    </div>
+    <div class="compare-wrap" tabindex="0" role="region" aria-label="Bảng so sánh, cuộn ngang nếu không đủ chỗ">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col"><span>{{ icon("circle-x", 20) }} {{ data.compare.bad_title }}</span></th>
+            <th scope="col"><span>{{ icon("circle-check", 20) }} {{ data.compare.good_title }}</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in data.compare.rows %}
+          <tr>
+            <td class="bad"><span>{{ icon("x", 18) }}<span>{{ row.bad }}</span></span></td>
+            <td class="good"><span>{{ icon("check", 18) }}<span>{{ row.good }}</span></span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="con-so">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{{ data.metrics.eyebrow }}</p>
+      <h2 id="con-so">{{ data.metrics.title }}</h2>
+    </div>
+    <div class="metrics">
+      {% for m in data.metrics["items"] %}
+      <article class="metric">
+        <p class="metric-value">{{ m.value }}</p>
+        <h3 class="metric-label">{{ m.label }}</h3>
+        <p>{{ m.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="bat-dau">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{{ data.steps.eyebrow }}</p>
+      <h2 id="bat-dau">{{ data.steps.title }}</h2>
+      <p class="lead">{{ data.steps.lead }}</p>
+    </div>
+    <ol class="timeline">
+      {% for s in data.steps["items"] %}
+      <li>
+        <span class="step-num" aria-hidden="true">{{ loop.index }}</span>
+        <div class="step-card">
+          <h3><span class="visually-hidden">Bước {{ loop.index }}: </span>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+          <span class="tag{% if s.who == 'Tallyo làm' %} tag-green{% endif %}">{{ s.who }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{% if body.strip() %}
+<section class="section" aria-label="Giới thiệu thêm">
+  <div class="container"><div class="prose">{{ body | safe }}</div></div>
+</section>
+{% endif %}
+{{ ui.cta_section(data.cta.title, data.cta.text) }}
+{% endblock %}

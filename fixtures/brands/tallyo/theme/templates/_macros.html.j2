@@ -1,0 +1,85 @@
+{# Logo riêng của Tallyo: bốn vạch đếm và một vạch chéo (tally). Không dùng logo conarum. #}
+{% macro logo_mark(size=30) -%}
+<svg class="brand-mark" width="{{ size }}" height="{{ size }}" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="9" y1="9" x2="9" y2="23"/>
+    <line x1="13.5" y1="9" x2="13.5" y2="23"/>
+    <line x1="18" y1="9" x2="18" y2="23"/>
+    <line x1="22.5" y1="9" x2="22.5" y2="23"/>
+    <line x1="6.5" y1="20" x2="25.5" y2="12"/>
+  </g>
+</svg>
+{%- endmacro %}
+
+{% macro crumbs_nav(crumbs) -%}
+<nav class="crumbs" aria-label="Đường dẫn">
+  <ol>
+    {% for name, path in crumbs %}
+    {% if loop.last %}<li aria-current="page">{{ name }}</li>{% else %}<li><a href="{{ path }}">{{ name }}</a></li>{% endif %}
+    {% endfor %}
+  </ol>
+</nav>
+{%- endmacro %}
+
+{% macro page_head(page, crumbs, updated) -%}
+<section class="page-head">
+  <div class="container">
+    {{ crumbs_nav(crumbs) }}
+    {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    <h1>{{ page.h1 }}</h1>
+    {% if page.lede %}<p class="lead">{{ page.lede }}</p>{% endif %}
+    <p class="page-meta">
+      {% if page.published %}
+      <span>{{ icon("calendar", 16) }} Đăng ngày <time datetime="{{ page.published.isoformat() }}">{{ page.published | date_vi }}</time></span>
+      {% else %}
+      <span>{{ icon("clock", 16) }} Cập nhật <time datetime="{{ updated.isoformat() }}">{{ updated | date_vi }}</time></span>
+      {% endif %}
+    </p>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro laws_block(codes) -%}
+{% if codes %}
+<section class="laws" aria-labelledby="can-cu-phap-ly">
+  <h2 id="can-cu-phap-ly">Căn cứ pháp lý</h2>
+  <p>Các văn bản dưới đây được nhóm đối chiếu trên nguồn chính thống vào ngày ghi kèm. Văn bản có thể được sửa đổi sau ngày đó, hãy kiểm tra lại trước khi áp dụng.</p>
+  {% for code in codes %}
+  {% set ref = lawref(code) %}
+  <article class="law-card">
+    <h3>{{ law(code) }}</h3>
+    <p>{{ ref.title }}. {{ ref.issuer }}{% if ref.signed_date %} ban hành ngày {{ ref.signed_date | date_vi }}{% endif %}.</p>
+    <p>{{ ref.point }}</p>
+    {% if ref.quote %}<p class="quote">“{{ ref.quote }}”{% if ref.article %} ({{ ref.article }}){% endif %}</p>{% endif %}
+    <p class="row">
+      <span class="tag{% if ref.status in ('active', 'amended') %} tag-green{% endif %}">{{ status_label[ref.status] }}</span>
+      <span>Hiệu lực từ {{ ref.effective_date | date_vi }}</span>
+      {% if ref.amended_by %}<span>Sửa đổi bởi {% for c in ref.amended_by %}{{ law(c) }}{% if not loop.last %}, {% endif %}{% endfor %}</span>{% endif %}
+      {% if ref.ended_on %}<span>Hết hiệu lực từ {{ ref.ended_on | date_vi }}</span>{% endif %}
+      {% if ref.superseded_by %}<span>Thay thế bởi {{ law(ref.superseded_by) }}</span>{% endif %}
+      {% if ref.verified_on %}<span>Đối chiếu ngày {{ ref.verified_on | date_vi }}</span>{% endif %}
+    </p>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+{%- endmacro %}
+
+{% macro cta_section(title="Thử Tallyo ở cửa hàng của bạn", text=None) -%}
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-copy">
+        <p class="eyebrow">Bắt đầu hôm nay</p>
+        <h2 id="cta-title">{{ title }}</h2>
+        <p>{{ text or ("Dùng thử gói " ~ plans.shop.name ~ " miễn phí " ~ facts.trial.days ~ " ngày, không cần thẻ thanh toán. Hết hạn dùng thử, bạn chọn gói hoặc dừng; dữ liệu được giữ " ~ facts.trial.data_kept_days ~ " ngày.") }}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-white" href="/lien-he/#dung-thu">Dùng thử {{ facts.trial.days }} ngày</a>
+        <a class="btn btn-outline-white" href="/bang-gia/">Xem bảng giá</a>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endmacro %}

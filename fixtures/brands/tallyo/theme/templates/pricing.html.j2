@@ -1,0 +1,79 @@
+{% extends "base.html.j2" %}
+{% macro yes_no(ok) -%}
+{% if ok %}{{ icon("check", 18) }}<span class="visually-hidden">Có</span>{% else %}{{ icon("x", 18, "icon no") }}<span class="visually-hidden">Không</span>{% endif %}
+{%- endmacro %}
+{% block main %}
+<article class="page-article">
+{{ ui.page_head(page, crumbs, updated) }}
+<section class="section listing" aria-labelledby="cac-goi">
+  <div class="container">
+    {% for rp in plans.values() if rp.upcoming %}
+    <div class="notice" role="note">
+      {{ icon("calendar", 22) }}
+      <p><strong>Thông báo điều chỉnh giá ngày {{ facts.billing.price_change_announced_on | date_vi }}:</strong>
+      từ {{ rp.upcoming.effective_from | date_vi }}, gói {{ rp.name }} ({{ rp.code }}) có giá {{ rp.upcoming.price_month | vnd }}/tháng hoặc {{ rp.upcoming.price_year | vnd }}/năm.
+      {{ facts.billing.price_change_rule }}</p>
+    </div>
+    {% endfor %}
+    <h2 id="cac-goi" class="visually-hidden">Các gói của {{ brand.name }}</h2>
+    <div class="plans">
+      {% for rp in plans.values() %}
+      <article class="plan{% if rp.highlighted %} highlight{% endif %}" aria-labelledby="goi-{{ rp.key }}">
+        {% if rp.code == facts.trial.included_plan %}<span class="tag">Có dùng thử {{ facts.trial.days }} ngày</span>{% endif %}
+        <p class="plan-code">Mã gói {{ rp.code }}</p>
+        <h3 id="goi-{{ rp.key }}">Gói {{ rp.name }}</h3>
+        <p class="for">{{ rp.for_who }}</p>
+        <p class="price">
+          <span class="amount">{{ rp.price.price_month | vnd }}</span>
+          <span class="per">mỗi tháng, hoặc {{ rp.price.price_year | vnd }} mỗi năm</span>
+        </p>
+        <ul>
+          <li>{{ icon("check", 18) }}<span>{{ rp.stores }} điểm bán{% if rp.extra_store_price_month %}, thêm điểm bán {{ rp.extra_store_price_month | vnd }}/tháng{% endif %}</span></li>
+          <li>{{ icon("check", 18) }}<span>{{ rp.staff_accounts }} tài khoản nhân viên</span></li>
+          <li>{{ icon("check", 18) }}<span>{% if rp.products_limit %}Tối đa {{ rp.products_limit | number_vi }} mặt hàng{% else %}Không giới hạn mặt hàng{% endif %}</span></li>
+          <li>{{ icon("check", 18) }}<span>{{ rp.einvoice_per_year | number_vi }} hoá đơn điện tử mỗi năm</span></li>
+        </ul>
+        <a class="btn {{ 'btn-primary' if rp.highlighted else 'btn-ghost' }}" href="/lien-he/#dung-thu">Chọn gói {{ rp.name }}</a>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="price-note">
+      <span>{{ icon("clock", 16) }} Giá áp dụng tại ngày {{ as_of | date_vi }}</span>
+      <span>{{ icon("wallet", 16) }} {{ facts.billing.year_discount_note }}</span>
+    </p>
+  </div>
+</section>
+
+<section class="section flush-top" aria-labelledby="so-sanh-goi">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Chi tiết</p>
+      <h2 id="so-sanh-goi">So sánh chi tiết các gói</h2>
+    </div>
+    {{ table_scroll_open }}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Hạng mục</th>
+            {% for rp in plans.values() %}<th scope="col">{{ rp.name }} ({{ rp.code }})</th>{% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Giá theo tháng</th>{% for rp in plans.values() %}<td>{{ rp.price.price_month | vnd }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Giá theo năm</th>{% for rp in plans.values() %}<td>{{ rp.price.price_year | vnd }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Số điểm bán</th>{% for rp in plans.values() %}<td>{{ rp.stores }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Tài khoản nhân viên</th>{% for rp in plans.values() %}<td>{{ rp.staff_accounts }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Số mặt hàng</th>{% for rp in plans.values() %}<td>{{ rp.products_limit | number_vi if rp.products_limit else "Không giới hạn" }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Hoá đơn điện tử mỗi năm</th>{% for rp in plans.values() %}<td>{{ rp.einvoice_per_year | number_vi }}</td>{% endfor %}</tr>
+          {% for f in facts.features %}
+          <tr><th scope="row">{{ f.name }}</th>{% for rp in plans.values() %}<td>{{ yes_no(rp.code in f.plans) }}</td>{% endfor %}</tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="prose after-grid">{{ body | safe }}</div>
+  </div>
+</section>
+</article>
+{{ ui.cta_section() }}
+{% endblock %}

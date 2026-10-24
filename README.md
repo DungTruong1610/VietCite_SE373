@@ -44,6 +44,19 @@ Chi tiết về gói UI: [packages/README.md](packages/README.md) và [ADR 0002]
 
 Lệnh chạy hệ thống (`make up`, `make test`…) sẽ có từ Phase 1.
 
+### Website demo Tallyo
+
+Website mock của thương hiệu giả lập Tallyo (16 trang, HTML tĩnh) nằm ở `fixtures/brands/tallyo/site/`, sinh bởi `tools/sitegen`:
+
+```bash
+cd tools/sitegen
+python -m venv .venv && .venv/Scripts/python -m pip install jinja2 pyyaml markdown-it-py pydantic segno pytest trafilatura playwright==1.63.0
+.venv/Scripts/python -m sitegen build --all && .venv/Scripts/python -m sitegen check --all --strict
+.venv/Scripts/python -m sitegen serve --port 8081      # http://localhost:8081
+```
+
+Chi tiết: [docs/website-tallyo/README.md](docs/website-tallyo/README.md), [ADR 0003](docs/adr/0003-static-site-generator.md).
+
 ## Tài liệu
 
 | Tài liệu | Nội dung |
@@ -53,6 +66,7 @@ Lệnh chạy hệ thống (`make up`, `make test`…) sẽ có từ Phase 1.
 | [docs/k-matrix.md](docs/k-matrix.md) | Ma trận phủ 8 mảng kiến thức K1–K8 |
 | [docs/use-cases/](docs/use-cases/) | Scorecard từng use case UC1–UC8 |
 | [docs/adr/](docs/adr/) | Các quyết định kiến trúc |
+| [docs/website-tallyo/](docs/website-tallyo/) | Website demo Tallyo: kế hoạch, dàn ý, báo cáo pháp lý |
 | [docs/ai-usage.md](docs/ai-usage.md) | Minh bạch việc dùng công cụ AI |
 | [AGENTS.md](AGENTS.md) | Hướng dẫn cho AI coding agent làm việc trong repo |
 

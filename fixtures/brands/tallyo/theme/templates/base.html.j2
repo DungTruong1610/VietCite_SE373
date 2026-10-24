@@ -1,0 +1,102 @@
+{% import "_macros.html.j2" as ui %}
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% block title %}{{ page.title }}{% endblock %}</title>
+{% block meta %}
+<meta name="description" content="{{ page.description }}">
+<link rel="canonical" href="{{ canonical }}">
+{% endblock %}
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="generator" content="sitegen (VietCite Studio)">
+<link rel="preload" href="/assets/fonts/montserrat-vietnamese-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-vietnamese-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+{% block jsonld %}{{ json_ld }}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#noi-dung">Bỏ qua, tới nội dung chính</a>
+<aside class="demo-notice" aria-label="Thông báo thương hiệu giả lập" data-nosnippet>
+  <div class="container">
+    {{ icon("info", 16) }}
+    <p>{{ brand.name }} là thương hiệu giả lập phục vụ đồ án SE373 (UIT). Sản phẩm, giá và số liệu công ty trên trang này không có thật.</p>
+  </div>
+</aside>
+<header class="site-header">
+  <div class="container">
+    <a class="brand-link" href="/" aria-label="{{ brand.name }}, về trang chủ">
+      {{ ui.logo_mark() }}
+      <span class="brand-name">{{ brand.name }}</span>
+    </a>
+    {% set current = page.path if page is defined else "" %}
+    <nav aria-label="Điều hướng chính">
+      <ul class="nav-tabs">
+        {% for item in site.nav() %}
+        <li><a href="{{ item.meta.path }}"{% if current.startswith(item.meta.path) %} aria-current="page"{% endif %}>{{ item.meta.nav }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <details class="mobile-nav">
+      <summary>{{ icon("menu", 18) }} Menu</summary>
+      <nav aria-label="Điều hướng trên điện thoại">
+        <ul>
+          {% for item in site.nav() %}
+          <li><a href="{{ item.meta.path }}"{% if current.startswith(item.meta.path) %} aria-current="page"{% endif %}>{{ item.meta.nav }}</a></li>
+          {% endfor %}
+          <li><a href="/lien-he/#dung-thu">Dùng thử {{ facts.trial.days }} ngày</a></li>
+        </ul>
+      </nav>
+    </details>
+    <a class="btn btn-primary btn-sm header-cta" href="/lien-he/#dung-thu">Dùng thử {{ facts.trial.days }} ngày</a>
+  </div>
+</header>
+<main id="noi-dung">
+{% block main %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand-link" href="/">{{ ui.logo_mark() }}<span class="brand-name">{{ brand.name }}</span></a>
+        <p>{{ brand.tagline }}</p>
+        <p>Liên hệ: <a href="mailto:{{ brand.contact.support_email }}">{{ brand.contact.support_email }}</a></p>
+      </div>
+      <div>
+        <h2>Sản phẩm</h2>
+        <ul>
+          <li><a href="/tinh-nang/">Tính năng</a></li>
+          <li><a href="/tinh-nang/hoa-don-dien-tu/">Hoá đơn điện tử</a></li>
+          <li><a href="/tinh-nang/ban-hang-tai-quay/">Bán hàng tại quầy</a></li>
+          <li><a href="/bang-gia/">Bảng giá</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="/huong-dan/">Hướng dẫn</a></li>
+          <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/lien-he/">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Công ty</h2>
+        <ul>
+          <li><a href="/gioi-thieu/">Về {{ brand.name }}</a></li>
+          <li><a href="/chinh-sach/dieu-khoan-su-dung/">Điều khoản sử dụng</a></li>
+          <li><a href="/chinh-sach/bao-mat/">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {{ as_of.year }} {{ brand.legal_name }}. Công ty và sản phẩm là giả lập, phục vụ đồ án SE373 (UIT).</p>
+      <p>{% if updated is defined %}Trang cập nhật ngày <time datetime="{{ updated.isoformat() }}">{{ updated | date_vi }}</time>. {% endif %}Font Montserrat và Inter (SIL OFL), biểu tượng Lucide (ISC).</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

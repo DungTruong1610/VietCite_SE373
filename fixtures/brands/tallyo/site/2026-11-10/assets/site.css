@@ -1,0 +1,414 @@
+/*
+  Tallyo, website demo (thương hiệu giả lập, đồ án SE373 UIT).
+  Hệ thị giác theo conarum-brand-guidelines + conarum-html-page-design, KHÔNG dùng logo conarum.
+  - Nền trắng, chiều sâu bằng shadow; đỏ #C00000 chỉ là điểm nhấn (CTA, icon, số liệu).
+  - Tiêu đề Montserrat 600. Thân bài: Poppins thiếu 88/96 ký tự tiếng Việt nên dùng Inter,
+    là font dự phòng chính thức của brand guidelines.
+  - Một theme sáng: brand chỉ cho phép nền trắng hoặc trắng chuyển đỏ nhạt.
+*/
+
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/montserrat-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/montserrat-vietnamese-600-normal.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/montserrat-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/montserrat-vietnamese-700-normal.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/inter-vietnamese-400-normal.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("fonts/inter-vietnamese-500-normal.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/inter-vietnamese-600-normal.woff2") format("woff2"); unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB; }
+
+:root {
+  /* Màu: chỉ dùng giá trị có trong brand guidelines và conarum-html-page-design */
+  --red: #C00000;
+  --red-dark: #8B0000;
+  --red-xs: rgba(192, 0, 0, 0.05);
+  --red-md: rgba(192, 0, 0, 0.14);
+  --red-tint: #FFF0F0;
+  --ink: #1A1A1A;
+  --ink-2: #4A4A4A;
+  --ink-3: #666666;
+  --line: #EBEBEB;
+  --white: #FFFFFF;
+  --green: #0F6E56;
+  --green-bg: #E8F5F0;
+  --cta-gradient: linear-gradient(130deg, #C00000 0%, #7A0000 45%, #1E0000 100%);
+
+  --font-head: "Montserrat", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 28px rgba(0, 0, 0, 0.07);
+  --shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.06), 0 18px 44px rgba(0, 0, 0, 0.11);
+  --shadow-red: 0 2px 10px rgba(192, 0, 0, 0.28);
+  --radius: 14px;
+  --maxw: 1200px;
+  --gutter: clamp(16px, 5vw, 72px);
+  --section: clamp(64px, 9vw, 100px);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink-2);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+img, svg { max-width: 100%; }
+a { color: var(--red); text-underline-offset: 0.2em; }
+a:hover { color: var(--red-dark); }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+p, ul, ol, table { margin: 0; }
+.accent { color: var(--red); }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.icon { flex: none; vertical-align: middle; }
+
+.container {
+  width: 100%;
+  max-width: calc(var(--maxw) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--ink); color: var(--white); padding: 10px 16px; border-radius: 999px;
+}
+.skip-link:focus { top: 12px; color: var(--white); }
+
+/* ---------- Dải thông báo giả lập ---------- */
+.demo-notice { background: var(--red-tint); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.5; }
+.demo-notice .container { display: flex; gap: 8px; align-items: center; padding-block: 8px; }
+.demo-notice .icon { color: var(--red); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .container { display: flex; align-items: center; gap: 24px; min-height: 72px; }
+.brand-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand-link:hover { color: var(--ink); }
+.brand-mark { color: var(--red); }
+.brand-name { font-family: var(--font-head); font-weight: 700; font-size: 1.375rem; letter-spacing: -0.02em; }
+.nav-tabs { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0 0 0 auto; }
+.nav-tabs a, .mobile-nav a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+  border-radius: 999px; text-decoration: none;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9375rem; color: var(--ink);
+}
+.nav-tabs a:hover { background: var(--red-xs); color: var(--red); }
+.nav-tabs a[aria-current="page"] { background: var(--red); color: var(--white); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 26px; border-radius: 999px;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9375rem; line-height: 1;
+  text-decoration: none; border: 1.5px solid transparent; cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.btn-primary { background: var(--red); color: var(--white); }
+.btn-primary:hover { background: var(--red-dark); color: var(--white); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+.btn-sm { min-height: 44px; padding: 0 20px; font-size: 0.875rem; }
+.header-cta { flex: none; }
+
+.mobile-nav { display: none; position: relative; margin-left: auto; }
+.mobile-nav summary {
+  list-style: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px;
+  border: 1.5px solid var(--line); border-radius: 999px; cursor: pointer;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9375rem; color: var(--ink);
+}
+.mobile-nav summary::-webkit-details-marker { display: none; }
+.mobile-nav[open] summary { border-color: var(--red); color: var(--red); }
+.mobile-nav ul {
+  position: absolute; right: 0; top: calc(100% + 10px); width: min(300px, calc(100vw - 32px));
+  list-style: none; margin: 0; padding: 10px; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-hover);
+  display: grid; gap: 2px;
+}
+.mobile-nav ul a { width: 100%; }
+.mobile-nav ul a[aria-current="page"] { background: var(--red-xs); color: var(--red); }
+
+/* ---------- Section chung ---------- */
+.section { padding-block: var(--section); }
+.section-head { display: grid; gap: 16px; max-width: 46rem; margin-bottom: clamp(36px, 5vw, 54px); }
+.section-head.center { margin-inline: auto; text-align: center; justify-items: center; }
+.eyebrow {
+  display: inline-flex; gap: 8px; align-items: center;
+  font-family: var(--font-body); font-weight: 500; font-size: 0.8125rem; color: var(--red);
+}
+.eyebrow::before { content: "—"; }
+.section-head h2 { font-size: clamp(1.75rem, 3.2vw, 2.25rem); }
+.lead { font-size: 1.0625rem; color: var(--ink-3); max-width: 42rem; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding-block: clamp(48px, 7vw, 96px) var(--section); overflow: hidden; }
+.hero .container { display: grid; grid-template-columns: minmax(0, 1fr) 500px; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero-copy { display: grid; gap: 24px; justify-items: start; min-width: 0; }
+.badge-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+  background: var(--red-xs); color: var(--red); font-family: var(--font-head); font-weight: 600; font-size: 0.8125rem;
+}
+.hero h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1.1; font-weight: 700; }
+.hero .lead { font-size: 1.125rem; max-width: 34rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { display: flex; gap: 8px; align-items: center; font-size: 0.875rem; color: var(--ink-3); }
+.hero-note .icon { color: var(--green); }
+.hero-visual { position: relative; min-width: 0; }
+.hero-visual::before {
+  content: ""; position: absolute; inset: -18% -22%; z-index: -1;
+  background: radial-gradient(closest-side, rgba(192, 0, 0, 0.07), rgba(192, 0, 0, 0));
+}
+.mockup { display: block; width: 100%; height: auto; filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.12)); }
+.mockup text { font-family: var(--font-body); }
+.mockup .m-head { font-family: var(--font-head); font-weight: 600; }
+
+/* ---------- Thẻ trụ cột (pillar) ---------- */
+.pillars { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.card {
+  position: relative; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 30px 26px; display: grid; gap: 12px; align-content: start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; border-radius: 0 0 var(--radius) var(--radius);
+  background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+}
+.card:hover { transform: translateY(-7px); box-shadow: var(--shadow-hover); }
+.card:hover::after { transform: scaleX(1); }
+.card .card-icon { color: var(--red); }
+.card h3 { font-size: 1.125rem; }
+.card p { color: var(--ink-3); font-size: 0.9375rem; }
+.card a.stretched { color: inherit; text-decoration: none; }
+.card a.stretched::before { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+.card .more { display: inline-flex; align-items: center; gap: 6px; color: var(--red); font-family: var(--font-head); font-weight: 600; font-size: 0.875rem; }
+.card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.card .meta { font-size: 0.8125rem; color: var(--ink-3); }
+.plan-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 999px;
+  font-family: var(--font-head); font-weight: 600; font-size: 0.75rem; background: var(--red-xs); color: var(--red);
+}
+.tag-green { background: var(--green-bg); color: var(--green); }
+
+/* ---------- Bảng so sánh ---------- */
+.compare-wrap { position: relative; border-radius: var(--radius); box-shadow: var(--shadow); overflow-x: auto; background: var(--white); }
+.compare { width: 100%; border-collapse: collapse; }
+.compare th, .compare td { padding: 18px 24px; text-align: left; vertical-align: top; width: 50%; }
+.compare thead th { background: var(--red); color: var(--white); font-family: var(--font-head); font-weight: 600; font-size: 1rem; }
+.compare thead th span { display: inline-flex; gap: 10px; align-items: center; }
+.compare tbody td { border-top: 1px solid var(--line); }
+.compare td span { display: flex; gap: 12px; align-items: flex-start; }
+.compare .bad { color: var(--ink-3); }
+.compare .bad .icon { color: var(--red); margin-top: 3px; }
+.compare .good { color: var(--ink); }
+.compare .good .icon { color: var(--green); margin-top: 3px; }
+
+/* ---------- Số liệu ---------- */
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.metric {
+  position: relative; overflow: hidden; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 32px 28px 28px; display: grid; gap: 6px; transition: transform 0.25s ease;
+}
+.metric::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red); }
+.metric:hover { transform: translateY(-5px); }
+.metric .metric-value { font-family: var(--font-head); font-weight: 600; font-size: clamp(2rem, 3.6vw, 2.75rem); color: var(--red); line-height: 1.1; letter-spacing: -0.02em; }
+.metric-label { font-family: var(--font-head); font-weight: 600; color: var(--ink); }
+.metric p { color: var(--ink-3); font-size: 0.9rem; }
+
+/* ---------- Các bước (timeline) ---------- */
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; position: relative; max-width: 52rem; }
+.timeline::before {
+  content: ""; position: absolute; left: 21px; top: 22px; bottom: 22px; width: 2px;
+  background: linear-gradient(to bottom, var(--red), rgba(192, 0, 0, 0.08));
+}
+.timeline li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 20px; align-items: start; position: relative; }
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--red); color: var(--white); box-shadow: var(--shadow-red);
+  font-family: var(--font-head); font-weight: 600; z-index: 1;
+}
+.step-card {
+  position: relative; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 22px 24px; display: grid; gap: 6px; transition: transform 0.25s ease;
+}
+.timeline li:hover .step-card { transform: translateX(4px); }
+.step-card h3 { font-size: 1.0625rem; padding-right: 110px; }
+.step-card p { color: var(--ink-3); font-size: 0.9375rem; }
+.step-card .tag { position: absolute; top: 20px; right: 20px; }
+
+/* ---------- CTA (luôn là section cuối) ---------- */
+.cta-card {
+  position: relative; overflow: hidden; border-radius: 20px; background: var(--cta-gradient); color: var(--white);
+  padding: clamp(40px, 6vw, 72px) clamp(28px, 6vw, 80px);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center;
+}
+.cta-card::before, .cta-card::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; }
+.cta-card::before { width: 420px; height: 420px; right: -120px; top: -180px; background: rgba(255, 255, 255, 0.03); }
+.cta-card::after { width: 320px; height: 320px; left: -140px; bottom: -200px; background: rgba(0, 0, 0, 0.1); }
+.cta-card > * { position: relative; z-index: 1; }
+.cta-copy { display: grid; gap: 12px; }
+.cta-card .eyebrow { color: rgba(255, 255, 255, 0.85); }
+.cta-card h2 { color: var(--white); font-size: clamp(1.625rem, 3vw, 2.25rem); }
+.cta-card p { color: rgba(255, 255, 255, 0.85); max-width: 38rem; }
+.cta-actions { display: grid; gap: 12px; }
+.btn-white { background: var(--white); color: var(--red); }
+.btn-white:hover { background: var(--red-tint); color: var(--red-dark); }
+.btn-outline-white { border-color: rgba(255, 255, 255, 0.6); color: var(--white); background: transparent; }
+.btn-outline-white:hover { border-color: var(--white); color: var(--white); background: rgba(255, 255, 255, 0.08); }
+
+/* ---------- Trang nội dung (doc) ---------- */
+.page-head { padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 44px); background: linear-gradient(180deg, var(--white) 0%, var(--red-tint) 100%); }
+.page-head .container { display: grid; gap: 16px; }
+.page-head h1 { font-size: clamp(2rem, 4.2vw, 2.875rem); max-width: 22em; }
+.page-head .lead { font-size: 1.125rem; }
+.crumbs ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; font-size: 0.8125rem; color: var(--ink-3); }
+.crumbs li { display: inline-flex; align-items: center; gap: 6px; }
+.crumbs li + li::before { content: "/"; color: var(--ink-3); }
+.crumbs a { color: var(--ink-3); text-decoration: none; }
+.crumbs a:hover { color: var(--red); text-decoration: underline; }
+.page-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.875rem; color: var(--ink-3); }
+.page-meta span { display: inline-flex; gap: 6px; align-items: center; }
+
+.doc-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: clamp(36px, 5vw, 56px) var(--section); }
+.doc-layout.has-toc { grid-template-columns: minmax(0, 1fr) 260px; }
+.toc { position: sticky; top: 96px; align-self: start; font-size: 0.875rem; }
+.toc p { font-family: var(--font-head); font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.toc ol { list-style: none; padding: 0 0 0 14px; margin: 0; border-left: 2px solid var(--line); display: grid; gap: 8px; }
+.toc a { color: var(--ink-3); text-decoration: none; }
+.toc a:hover { color: var(--red); }
+
+.prose { max-width: 72ch; display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; min-width: 0; }
+.prose > * { min-width: 0; }
+.prose h2 { font-size: clamp(1.4rem, 2.4vw, 1.75rem); margin-top: 28px; }
+.prose h3 { font-size: 1.1875rem; margin-top: 12px; }
+.prose ul, .prose ol { padding-left: 1.3em; display: grid; gap: 8px; }
+.prose li::marker { color: var(--red); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose code { font-size: 0.9em; background: var(--red-xs); padding: 0.1em 0.35em; border-radius: 4px; }
+.prose blockquote { margin: 0; padding: 16px 20px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink-3); }
+/* position: relative giữ phần tử visually-hidden (absolute) trong khung cuộn, tránh tràn ngang trang */
+.table-scroll { position: relative; overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); background: var(--white); }
+.table-scroll table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; }
+.table-scroll th, .table-scroll td { padding: 13px 18px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+.table-scroll thead th { background: var(--red-tint); color: var(--ink); font-family: var(--font-head); font-weight: 600; font-size: 0.875rem; border-top: 0; white-space: nowrap; }
+.table-scroll td .icon { color: var(--green); }
+.table-scroll td .icon.no { color: var(--ink-3); }
+
+.note {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start;
+  padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--red-md); background: var(--white);
+}
+.note > .icon { color: var(--red); margin-top: 2px; }
+.note p + p { margin-top: 8px; }
+.note strong { color: var(--ink); }
+
+.laws { display: grid; gap: 14px; margin-top: 8px; }
+.law-card { display: grid; gap: 6px; padding: 18px 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
+.law-card h3 { font-size: 1rem; margin: 0; }
+.law-card p { font-size: 0.9rem; color: var(--ink-3); }
+.law-card .row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 0.8125rem; color: var(--ink-3); }
+.law-card .quote { font-style: italic; color: var(--ink-2); }
+
+/* ---------- Bảng giá ---------- */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.plan {
+  position: relative; display: grid; gap: 18px; align-content: start; padding: 32px 28px;
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); border: 2px solid transparent;
+}
+.plan.highlight { border-color: var(--red); }
+.plan .plan-code { font-size: 0.8125rem; color: var(--ink-3); font-weight: 500; }
+.plan h3 { font-size: 1.375rem; }
+.plan .for { color: var(--ink-3); font-size: 0.9375rem; }
+.price { display: grid; gap: 2px; }
+.price .amount { font-family: var(--font-head); font-weight: 600; font-size: 2.25rem; color: var(--red); letter-spacing: -0.02em; line-height: 1.1; }
+.price .per { color: var(--ink-3); font-size: 0.875rem; }
+.plan ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 0.9375rem; }
+.plan li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; }
+.plan li .icon { color: var(--green); margin-top: 3px; }
+.plan .btn { width: 100%; }
+.plan .tag { position: absolute; top: 18px; right: 18px; }
+.price-note { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 20px; font-size: 0.875rem; color: var(--ink-3); }
+.notice {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start;
+  padding: 18px 22px; border-radius: var(--radius); background: var(--red-tint); color: var(--ink-2); margin-bottom: 32px;
+}
+.notice .icon { color: var(--red); margin-top: 2px; }
+.notice strong { color: var(--ink); }
+
+/* ---------- Blog ---------- */
+.post-card time { font-size: 0.8125rem; color: var(--ink-3); }
+.blog-external { margin-top: 40px; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--line); padding-block: 56px 32px; font-size: 0.9rem; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 32px; }
+.footer-grid h2 { font-size: 0.9375rem; margin-bottom: 12px; }
+.footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.footer-grid a { color: var(--ink-2); text-decoration: none; }
+.footer-grid a:hover { color: var(--red); text-decoration: underline; }
+.footer-brand { display: grid; gap: 12px; align-content: start; color: var(--ink-3); }
+.footer-bottom { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--ink-3); font-size: 0.8125rem; }
+
+/* ---------- 404 ---------- */
+.not-found { padding-block: var(--section); display: grid; gap: 20px; justify-items: start; }
+.not-found h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .hero .container { grid-template-columns: minmax(0, 1fr) 420px; }
+  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .nav-tabs, .header-cta { display: none; }
+  .mobile-nav { display: block; }
+  .hero .container { grid-template-columns: minmax(0, 1fr); }
+  .hero-visual { max-width: 520px; }
+  .metrics, .plans, .card-grid { grid-template-columns: minmax(0, 1fr); }
+  .cta-card { grid-template-columns: minmax(0, 1fr); }
+  .cta-actions { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .doc-layout.has-toc { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; order: -1; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .pillars { grid-template-columns: minmax(0, 1fr); }
+  .footer-grid { grid-template-columns: minmax(0, 1fr); }
+  .step-card h3 { padding-right: 0; }
+  .step-card .tag { position: static; justify-self: start; order: -1; }
+  .compare th, .compare td { padding: 14px 12px; font-size: 0.875rem; }
+  .compare td span { gap: 8px; }
+  .hero-actions .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .card:hover, .metric:hover, .timeline li:hover .step-card { transform: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Trang danh sách ---------- */
+.section.listing { padding-top: clamp(36px, 5vw, 56px); }
+.card h2 { font-size: 1.125rem; }
+.prose.after-grid { margin-top: clamp(40px, 6vw, 64px); }
+.section.flush-top { padding-top: 0; }

@@ -1,0 +1,29 @@
+{% extends "base.html.j2" %}
+{% block main %}
+<article class="page-article">
+{{ ui.page_head(page, crumbs, updated) }}
+{% set entries = toc + ([("can-cu-phap-ly", "Căn cứ pháp lý")] if (toc and page.laws) else []) %}
+<div class="container">
+  <div class="doc-layout{% if entries %} has-toc{% endif %}">
+    <div class="prose">
+      {{ body | safe }}
+      {{ ui.laws_block(page.laws) }}
+      {% if page.published %}
+      <p class="page-meta"><span>{{ icon("clock", 16) }} Bài đăng ngày {{ page.published | date_vi }}. Thông tin về giá và quy định trong bài đúng tại thời điểm đăng.</span></p>
+      {% endif %}
+    </div>
+    {% if entries %}
+    <aside class="toc" aria-label="Mục lục trang">
+      <p>Trong trang này</p>
+      <ol>
+        {% for anchor, text in entries %}
+        <li><a href="#{{ anchor }}">{{ text }}</a></li>
+        {% endfor %}
+      </ol>
+    </aside>
+    {% endif %}
+  </div>
+</div>
+</article>
+{% if page.cta %}{{ ui.cta_section() }}{% endif %}
+{% endblock %}

@@ -1,0 +1,35 @@
+[project]
+name = "sitegen"
+version = "0.1.0"
+description = "Static site generator cho website mock thương hiệu của VietCite Studio (Tallyo, Lâm Viên)"
+requires-python = ">=3.13"
+dependencies = [
+  "jinja2>=3.1",
+  "pyyaml>=6.0",
+  "markdown-it-py>=4.0",
+  "pydantic>=2.7",
+  "segno>=1.6",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8",
+  "trafilatura>=2.0",
+  "playwright==1.63.0",
+  "fonttools>=4.50",
+  "brotli>=1.1",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["visual: cần trình duyệt Chromium (Playwright)"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

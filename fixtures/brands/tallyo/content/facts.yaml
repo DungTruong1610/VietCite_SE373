@@ -1,0 +1,435 @@
+# Nguồn sự thật duy nhất cho website demo Tallyo.
+#
+# - Tallyo là THƯƠNG HIỆU GIẢ LẬP phục vụ đồ án SE373 (UIT). Mọi dữ kiện về công ty,
+#   gói giá, số khách hàng... đều là dữ kiện giả lập do nhóm đặt ra.
+# - Mọi con số hiển thị trên site phải lấy từ file này qua template, không gõ tay trong Markdown.
+# - Mục `legal` mô tả văn bản pháp luật THẬT, đã đối chiếu nguồn chính thống ngày 24/10/2026
+#   (xem docs/website-tallyo/phap-ly.md). Văn bản mới thì thêm với `verified: false` cho tới khi
+#   đối chiếu xong; `sitegen check --strict` báo lỗi nếu trang nhắc văn bản chưa xác minh.
+# - Trường `source_page` cho biết trang nào là nguồn chính thức của dữ kiện (dùng làm đáp án D1).
+#
+# Trạng thái: dữ kiện giả lập do Claude đề xuất, chờ nhóm duyệt; phần pháp luật đã xác minh 24/10/2026.
+
+schema_version: 1
+
+brand:
+  id: tallyo
+  name: Tallyo
+  is_fictional: true
+  aliases: [Tallyo, Tallyo POS, phần mềm Tallyo, ứng dụng Tallyo]
+  legal_name: Công ty TNHH Phần mềm Tallyo
+  category: Phần mềm quản lý bán hàng và hoá đơn điện tử
+  tagline: Bán nhanh tại quầy, xuất hoá đơn đúng quy định, sổ sách gọn gàng.
+  founded_year: 2023
+  city: TP. Hồ Chí Minh
+  team_size: 40
+  customers:
+    count: 3200
+    as_of: 2026-10-01
+    wording: hơn 3.200 hộ kinh doanh và cửa hàng nhỏ
+    source_page: /gioi-thieu/
+  mission: Giúp hộ kinh doanh chuyển từ ghi sổ tay sang bán hàng và kê khai đúng quy định mà không cần biết kế toán.
+  audience:
+    - Hộ kinh doanh đang chuyển từ thuế khoán sang kê khai
+    - Tiệm tạp hoá, cửa hàng tiện lợi nhỏ
+    - Quán cà phê, quán ăn
+    - Shop thời trang, mỹ phẩm bán cả tại cửa hàng và online
+  usp:
+    - Lập hoá đơn điện tử khởi tạo từ máy tính tiền ngay khi tính tiền, không phải nhập lại
+    - Sổ sách cho hộ kinh doanh tự lập từ dữ liệu bán hàng
+    - Cài đặt trong một buổi, dùng được trên điện thoại Android, iPhone và trình duyệt
+    - Hỗ trợ tiếng Việt cả tuần, kể cả Chủ nhật
+  contact:
+    support_email: hotro@tallyo.example
+    sales_email: banhang@tallyo.example
+    support_hours: 8:00–21:00, thứ Hai đến Chủ nhật
+    phone: null   # cố ý không công bố số điện thoại để tránh trùng số thật
+  site:
+    base_url_env: TALLYO_SITE_URL
+    base_url_default: http://localhost:8081
+    blog_url_env: WP_BASE_URL
+    blog_url_default: http://localhost:8080
+
+voice:
+  formality: thân thiện, rõ ràng, không dùng thuật ngữ kế toán khi chưa giải thích
+  self_reference: Tallyo
+  address_reader: bạn
+  sentence_style: câu ngắn, mỗi đoạn một ý, ưu tiên ví dụ cụ thể của tiệm tạp hoá và quán cà phê
+  sample_sentences:
+    - Bạn tính tiền xong là hoá đơn điện tử đã được lập, không phải ngồi nhập lại cuối ngày.
+    - Tallyo không bán phần cứng. Máy in nhiệt bạn đang dùng thường vẫn dùng được.
+  forbidden_phrases: [số 1, tốt nhất, rẻ nhất, cam kết 100%, đảm bảo không bị phạt]
+  required_terms:
+    - hoá đơn điện tử
+    - hộ kinh doanh
+  notes: Lần đầu nhắc tới "HĐĐT" phải viết đủ "hoá đơn điện tử".
+
+trial:
+  days: 15
+  credit_card_required: false
+  included_plan: TL-SHOP
+  data_kept_days: 30   # dữ liệu giữ lại sau khi hết dùng thử nếu chưa mua gói
+  source_page: /bang-gia/
+
+plans:
+  - code: TL-START
+    key: start
+    name: Khởi đầu
+    for_who: Hộ kinh doanh một cửa hàng, bán ít mặt hàng
+    stores: 1
+    staff_accounts: 2
+    products_limit: 500
+    einvoice_per_year: 300
+    price_history:
+      - effective_from: 2025-03-01
+        price_month: 99000
+        price_year: 990000
+  - code: TL-SHOP
+    key: shop
+    name: Cửa hàng
+    for_who: Cửa hàng bán hằng ngày, có nhân viên, cần quản lý kho
+    stores: 1
+    staff_accounts: 5
+    products_limit: null   # không giới hạn
+    einvoice_per_year: 2000
+    highlighted: true
+    price_history:
+      - effective_from: 2025-03-01   # giá ra mắt, chỉ còn trong bài blog 03/2025
+        price_month: 129000
+        price_year: 1290000
+      - effective_from: 2025-07-01
+        price_month: 149000
+        price_year: 1490000
+      - effective_from: 2026-11-01   # đợt tăng giá dùng cho D10 và bản build 2026-11-10
+        price_month: 179000
+        price_year: 1790000
+  - code: TL-CHAIN
+    key: chain
+    name: Chuỗi
+    for_who: Chủ có từ 2 đến 5 điểm bán
+    stores: 5
+    staff_accounts: 20
+    products_limit: null
+    einvoice_per_year: 10000
+    extra_store_price_month: 79000
+    price_history:
+      - effective_from: 2025-03-01
+        price_month: 399000
+        price_year: 3990000
+
+addons:
+  - key: einvoice_pack
+    name: Gói thêm 1.000 hoá đơn điện tử
+    price: 200000
+    validity_months: 12
+
+billing:
+  year_discount_note: Trả theo năm bằng giá 10 tháng
+  price_change_notice_days: 30
+  price_change_announced_on: 2026-10-01   # thông báo đợt tăng giá 01/11/2026 hiện trên /bang-gia/ của bản 2026-10-20
+  price_change_rule: Gói đã thanh toán trước ngày điều chỉnh giữ nguyên giá đến hết kỳ đã trả.
+  refund:
+    annual_first_payment_days: 7
+    monthly_refundable: false
+    einvoice_issued_refundable: false
+    source_page: /chinh-sach/dieu-khoan-su-dung/
+  payment_methods: [chuyển khoản qua mã VietQR, thẻ nội địa, thẻ quốc tế]
+
+features:
+  - key: pos
+    name: Bán hàng tại quầy
+    icon: scan-barcode
+    summary: Tính tiền bằng mã vạch hoặc chạm chọn món, in hoá đơn ra máy in nhiệt, nhận tiền qua mã VietQR.
+    plans: [TL-START, TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/ban-hang-tai-quay/
+  - key: einvoice_pos
+    name: Hoá đơn điện tử khởi tạo từ máy tính tiền
+    icon: receipt
+    summary: Mỗi lần tính tiền tạo một hoá đơn điện tử khởi tạo từ máy tính tiền; khách tra cứu bằng mã QR in trên hoá đơn giấy.
+    plans: [TL-START, TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/hoa-don-dien-tu/
+  - key: inventory
+    name: Quản lý kho
+    icon: package
+    summary: Nhập hàng, cảnh báo sắp hết, kiểm kho bằng điện thoại.
+    plans: [TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/ban-hang-tai-quay/
+  - key: hkd_books
+    name: Sổ sách hộ kinh doanh
+    icon: book-open-check
+    summary: Tự lập sổ doanh thu, chi phí theo mẫu dành cho hộ kinh doanh từ dữ liệu bán hàng; xuất Excel để kê khai.
+    plans: [TL-START, TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/
+  - key: multichannel
+    name: Đơn online
+    icon: smartphone
+    summary: Gom đơn từ trang bán hàng và mạng xã hội về một nơi, trừ kho chung với bán tại quầy.
+    plans: [TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/
+  - key: staff_roles
+    name: Phân quyền nhân viên
+    icon: users
+    summary: Mỗi nhân viên một tài khoản, chủ xem được ai bán gì, ai huỷ đơn.
+    plans: [TL-START, TL-SHOP, TL-CHAIN]
+    page: /tinh-nang/
+  - key: multi_store
+    name: Quản lý nhiều điểm bán
+    icon: store
+    summary: Xem doanh thu, kho và hoá đơn của từng điểm bán trên một màn hình.
+    plans: [TL-CHAIN]
+    page: /tinh-nang/
+
+compatibility:
+  platforms: [Android 9 trở lên, iOS 15 trở lên, trình duyệt Chrome, Edge, Safari bản mới]
+  printers: [máy in nhiệt khổ 58 mm, máy in nhiệt khổ 80 mm]
+  printer_connections: [Bluetooth, USB, mạng nội bộ (LAN)]
+  scanners: [máy quét mã vạch USB, máy quét mã vạch Bluetooth]
+  sells_hardware: false
+  offline_mode: Bán và in hoá đơn khi mất mạng; hoá đơn điện tử được gửi lên khi có mạng lại.
+  source_page: /tinh-nang/ban-hang-tai-quay/
+
+# Văn bản pháp luật THẬT, đã đối chiếu nguồn chính thống ngày 24/10/2026.
+# Báo cáo đầy đủ (nguồn, trích dẫn, độ tin cậy): docs/website-tallyo/phap-ly.md
+# Quy tắc: chỉ đưa lên site điều đã xác minh ở mức tin cậy cao; trích dẫn là nguyên văn.
+legal:
+  # ----- Đang có hiệu lực -----
+  - code: 198/2025/QH15
+    kind: Nghị quyết
+    issuer: Quốc hội
+    title: Về một số cơ chế, chính sách đặc biệt phát triển kinh tế tư nhân
+    signed_date: 2025-05-17
+    effective_date: 2025-05-17
+    status: active
+    point: Bỏ phương pháp khoán thuế và chấm dứt thu lệ phí môn bài đối với hộ kinh doanh, cá nhân kinh doanh từ 01/01/2026.
+    article: Điều 10 khoản 6
+    quote: Hộ kinh doanh, cá nhân kinh doanh không áp dụng phương pháp khoán thuế từ ngày 01 tháng 01 năm 2026.
+    source_url: https://xaydungchinhsach.chinhphu.vn/nghi-quyet-198-2025-qh15-ve-mot-so-co-che-chinh-sach-dac-biet-phat-trien-kinh-te-tu-nhan-119250517191622422.htm
+    verified: true
+    verified_on: 2026-10-24
+  - code: 108/2025/QH15
+    kind: Luật
+    issuer: Quốc hội
+    title: Luật Quản lý thuế
+    signed_date: 2025-12-10
+    effective_date: 2026-07-01
+    status: active
+    point: Luật Quản lý thuế mới, có hiệu lực chung từ 01/07/2026; riêng quy định về khai thuế, tính thuế và hoá đơn điện tử của hộ kinh doanh áp dụng từ 01/01/2026.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216541&classid=1&typegroupid=3
+    verified: true
+    verified_on: 2026-10-24
+  - code: 68/2026/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Quy định về chính sách thuế và quản lý thuế đối với hộ kinh doanh, cá nhân kinh doanh
+    signed_date: 2026-03-05
+    effective_date: 2026-03-05
+    status: amended
+    amended_by: [141/2026/NĐ-CP]
+    point: Quy định cách khai thuế, tính thuế, thời hạn nộp hồ sơ và việc dùng hoá đơn điện tử của hộ kinh doanh sau khi bỏ thuế khoán. Hộ kinh doanh nộp hồ sơ khai thuế bằng phương thức điện tử.
+    article: Điều 8 khoản 1 điểm a
+    quote: thông báo doanh thu thực tế phát sinh trong năm với cơ quan thuế chậm nhất là ngày 31 tháng 01 của năm dương lịch tiếp theo
+    source_url: https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-dinh-68-2026-nd-cp-quy-dinh-ve-chinh-sach-thue-quan-ly-thue-voi-ho-kinh-doanh-119260306102906789.htm
+    verified: true
+    verified_on: 2026-10-24
+  - code: 141/2026/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Sửa đổi, bổ sung một số điều của Nghị định 68/2026/NĐ-CP (trích yếu rút gọn)
+    signed_date: 2026-04-29
+    effective_date: 2026-01-01
+    status: active
+    point: Nâng mức doanh thu năm không chịu thuế GTGT và không phải nộp thuế TNCN của hộ kinh doanh từ 500 triệu đồng lên 1 tỷ đồng, áp dụng từ 01/01/2026. Hộ có doanh thu năm trên 1 tỷ đồng phải dùng hoá đơn điện tử và đăng ký trong 30 ngày kể từ ngày cuối cùng của kỳ tính thuế có doanh thu luỹ kế vượt mức này.
+    article: Điều 8 khoản 5 Nghị định 68/2026/NĐ-CP (đã sửa)
+    quote: Hộ kinh doanh, cá nhân kinh doanh có doanh thu năm trên 01 tỷ đồng thì phải áp dụng hóa đơn điện tử có mã của cơ quan thuế, hóa đơn điện tử khởi tạo từ máy tính tiền có kết nối dữ liệu với cơ quan thuế.
+    source_url: https://baochinhphu.vn/chinh-thuc-nang-nguong-chiu-thue-voi-ho-kinh-doanh-len-01-ty-dong-nam-ap-dung-tu-1-1-2026-102260429185517215.htm
+    verified: true
+    verified_on: 2026-10-24
+  - code: 18/2026/TT-BTC
+    kind: Thông tư
+    issuer: Bộ Tài chính
+    title: Quy định về hồ sơ, thủ tục quản lý thuế đối với hộ kinh doanh, cá nhân kinh doanh
+    signed_date: 2026-03-05
+    effective_date: 2026-03-05
+    status: amended
+    point: Quy định hồ sơ, mẫu biểu và thủ tục thông báo doanh thu, khai thuế, nộp thuế của hộ kinh doanh. Thay thế Thông tư 40/2021/TT-BTC. Đã được sửa đổi, bổ sung một số mẫu biểu trong năm 2026.
+    source_url: https://vanban.chinhphu.vn/?docid=217174&pageid=27160
+    verified: true
+    verified_on: 2026-10-24
+  - code: 152/2025/TT-BTC
+    kind: Thông tư
+    issuer: Bộ Tài chính
+    title: Hướng dẫn kế toán cho các hộ kinh doanh, cá nhân kinh doanh
+    signed_date: 2025-12-31
+    effective_date: 2026-01-01
+    status: active
+    point: Quy định mẫu sổ kế toán của hộ kinh doanh theo nhóm nghĩa vụ thuế (S1a-HKD cho hộ không chịu thuế GTGT và không nộp thuế TNCN; S2a-HKD đến S2e-HKD cho hộ nộp thuế) và thời hạn lưu trữ tài liệu kế toán. Thay thế Thông tư 88/2021/TT-BTC.
+    article: Điều 3 khoản 2
+    quote: Thời hạn lưu trữ tài liệu kế toán của hộ kinh doanh, cá nhân kinh doanh tối thiểu là 05 năm
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216533
+    verified: true
+    verified_on: 2026-10-24
+  - code: 254/2026/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Quy định chi tiết một số điều và biện pháp để tổ chức, hướng dẫn thi hành Luật Quản lý thuế số 108/2025/QH15 về hoá đơn điện tử, chứng từ điện tử
+    signed_date: 2026-06-30
+    effective_date: 2026-07-01
+    status: active
+    point: Nghị định hiện hành về hoá đơn điện tử, thay cho Nghị định 123/2020/NĐ-CP và Nghị định 70/2025/NĐ-CP. Hộ kinh doanh có doanh thu năm trên 1 tỷ đồng phải dùng hoá đơn điện tử có mã của cơ quan thuế hoặc hoá đơn điện tử khởi tạo từ máy tính tiền; hộ không thuộc diện này được tự nguyện đăng ký nếu có nhu cầu.
+    article: Điều 6 khoản 1 điểm d
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=218689
+    verified: true
+    verified_on: 2026-10-24
+  - code: 91/2026/TT-BTC
+    kind: Thông tư
+    issuer: Bộ Tài chính
+    title: Quy định một số điều của Luật Quản lý thuế và Nghị định 254/2026/NĐ-CP về hoá đơn điện tử, chứng từ điện tử
+    signed_date: 2026-06-30
+    effective_date: 2026-07-01
+    status: active
+    point: Hướng dẫn đăng ký sử dụng hoá đơn điện tử theo Mẫu số 01/ĐKTĐ-HĐĐT, ký hiệu hoá đơn và các mẫu thông báo. Hộ kinh doanh đăng ký thông qua tổ chức cung cấp dịch vụ hoá đơn điện tử; hệ thống của cơ quan thuế tự động đối chiếu thông tin đăng ký với cơ sở dữ liệu quốc gia về dân cư.
+    source_url: https://vanban.chinhphu.vn/?classid=1&docid=219006&orggroupid=4&pageid=27160
+    verified: true
+    verified_on: 2026-10-24
+  - code: 91/2025/QH15
+    kind: Luật
+    issuer: Quốc hội
+    title: Luật Bảo vệ dữ liệu cá nhân
+    signed_date: 2025-06-26
+    effective_date: 2026-01-01
+    status: active
+    point: Luật về bảo vệ dữ liệu cá nhân, áp dụng cho tổ chức xử lý dữ liệu cá nhân, trong đó có nhà cung cấp phần mềm lưu dữ liệu khách hàng của cửa hàng.
+    source_url: https://bocongan.gov.vn/chinh-sach-phap-luat/bai-viet/luat-bao-ve-du-lieu-ca-nhan-chinh-thuc-co-hieu-luc-thi-hanh-tu-ngay-01-01-2026-1767186124
+    verified: true
+    verified_on: 2026-10-24
+  - code: 356/2025/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Quy định chi tiết một số điều và biện pháp thi hành Luật Bảo vệ dữ liệu cá nhân
+    signed_date: 2025-12-31
+    effective_date: 2026-01-01
+    status: active
+    point: Nghị định hướng dẫn Luật Bảo vệ dữ liệu cá nhân, thay cho Nghị định 13/2023/NĐ-CP.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216387
+    verified: true
+    verified_on: 2026-10-24
+
+  # ----- Đã hết hiệu lực (chỉ nhắc để cảnh báo thông tin cũ; bẫy "quy định cũ" cho D3) -----
+  - code: 123/2020/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Quy định về hoá đơn, chứng từ
+    signed_date: 2020-10-19
+    effective_date: 2022-07-01
+    ended_on: 2026-07-01
+    status: superseded
+    superseded_by: 254/2026/NĐ-CP
+    point: Nghị định về hoá đơn áp dụng từ 01/07/2022 đến hết 30/06/2026; Điều 11 quy định hoá đơn khởi tạo từ máy tính tiền.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=201365
+    verified: true
+    verified_on: 2026-10-24
+  - code: 70/2025/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Sửa đổi, bổ sung một số điều của Nghị định 123/2020/NĐ-CP quy định về hoá đơn, chứng từ
+    signed_date: 2025-03-20
+    effective_date: 2025-06-01
+    ended_on: 2026-07-01
+    status: superseded
+    superseded_by: 254/2026/NĐ-CP
+    point: Từng quy định một nhóm hộ kinh doanh có doanh thu từ 1 tỷ đồng/năm trở lên dùng hoá đơn điện tử khởi tạo từ máy tính tiền. Hết hiệu lực từ 01/07/2026; quy định hiện hành là Nghị định 254/2026/NĐ-CP.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=213179
+    verified: true
+    verified_on: 2026-10-24
+  - code: 88/2021/TT-BTC
+    kind: Thông tư
+    issuer: Bộ Tài chính
+    title: Hướng dẫn chế độ kế toán cho hộ kinh doanh, cá nhân kinh doanh
+    signed_date: 2021-10-11
+    effective_date: 2022-01-01
+    ended_on: 2026-01-01
+    status: superseded
+    superseded_by: 152/2025/TT-BTC
+    point: Mẫu sổ kế toán cũ của hộ kinh doanh. Hết hiệu lực từ 01/01/2026.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216533
+    verified: true
+    verified_on: 2026-10-24
+    note: source_url trỏ tới văn bản thay thế (Điều 8 Thông tư 152/2025/TT-BTC ghi việc hết hiệu lực).
+  - code: 40/2021/TT-BTC
+    kind: Thông tư
+    issuer: Bộ Tài chính
+    title: Hướng dẫn thuế GTGT, thuế TNCN và quản lý thuế đối với hộ kinh doanh, cá nhân kinh doanh
+    signed_date: 2021-06-01
+    effective_date: 2021-08-01
+    ended_on: 2026-03-05
+    status: superseded
+    superseded_by: 18/2026/TT-BTC
+    point: Hướng dẫn cũ về thuế khoán và thuế kê khai của hộ kinh doanh. Bị thay thế từ 05/03/2026.
+    source_url: https://vanban.chinhphu.vn/?docid=217174&pageid=27160
+    verified: true
+    verified_on: 2026-10-24
+    note: source_url trỏ tới văn bản thay thế (Điều 9 Thông tư 18/2026/TT-BTC ghi việc thay thế).
+  - code: 13/2023/NĐ-CP
+    kind: Nghị định
+    issuer: Chính phủ
+    title: Về bảo vệ dữ liệu cá nhân
+    signed_date: 2023-04-17
+    effective_date: 2023-07-01
+    ended_on: 2026-01-01
+    status: superseded
+    superseded_by: 356/2025/NĐ-CP
+    point: Nghị định cũ về bảo vệ dữ liệu cá nhân. Hết hiệu lực từ 01/01/2026.
+    source_url: https://vanban.chinhphu.vn/?pageid=27160&docid=216387
+    verified: true
+    verified_on: 2026-10-24
+    note: source_url trỏ tới văn bản thay thế (Điều 42 khoản 2 Nghị định 356/2025/NĐ-CP ghi việc hết hiệu lực).
+
+# Vai trò -> số hiệu văn bản. Nội dung trang gọi theo vai trò để khi văn bản bị thay thế chỉ sửa ở đây.
+legal_refs:
+  khoan_abolish: 198/2025/QH15
+  tax_admin_law: 108/2025/QH15
+  hkd_tax: 68/2026/NĐ-CP
+  threshold: 141/2026/NĐ-CP
+  hkd_procedures: 18/2026/TT-BTC
+  books: 152/2025/TT-BTC
+  einvoice: 254/2026/NĐ-CP
+  einvoice_guide: 91/2026/TT-BTC
+  privacy_law: 91/2025/QH15
+  privacy_decree: 356/2025/NĐ-CP
+  old_einvoice: 123/2020/NĐ-CP
+  old_pos_rule: 70/2025/NĐ-CP
+  old_books: 88/2021/TT-BTC
+  old_hkd_tax: 40/2021/TT-BTC
+  old_privacy_decree: 13/2023/NĐ-CP
+
+# Dữ kiện pháp lý dùng trong câu chữ (đã xác minh, xem legal ở trên)
+legal_facts:
+  threshold_label: 1 tỷ đồng
+  old_threshold_label: 500 triệu đồng
+  einvoice_register_days: 30
+  revenue_notice_deadline: ngày 31 tháng 01 của năm sau
+  quarterly_deadline: ngày cuối cùng của tháng đầu tiên của quý tiếp theo
+  monthly_deadline: ngày 20 của tháng tiếp theo
+  books_retention_years: 5
+  registration_form: Mẫu số 01/ĐKTĐ-HĐĐT
+  verified_on: 2026-10-24
+
+guides:
+  einvoice_setup_minutes: 30
+
+privacy:
+  data_location: trung tâm dữ liệu đặt tại Việt Nam
+  retention_after_cancel_years: 5   # bằng thời hạn lưu tài liệu kế toán tối thiểu của hộ kinh doanh (TT 152/2025)
+
+# Ngày của từng trang. Build tất định: không dùng thời điểm build.
+page_dates:
+  default_updated: 2026-10-24
+  blog:
+    ra-mat-goi-cua-hang: 2025-03-01
+    5-viec-truoc-khi-bo-thue-khoan: 2025-12-15
+
+builds:
+  - as_of: 2026-10-24
+    note: Bản mặc định, giá gói Cửa hàng 149.000 đ/tháng, có thông báo tăng giá từ 01/11/2026
+  - as_of: 2026-11-10
+    note: Sau đợt tăng giá 01/11/2026, gói Cửa hàng 179.000 đ/tháng
