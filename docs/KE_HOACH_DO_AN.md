@@ -470,6 +470,13 @@ Do An/
 - **Công nghệ:** uv, LangChain/LangGraph, langchain-openai, langchain-google-genai, google-genai, httpx, FastAPI, sse-starlette, SQLModel, Docker Compose, React/Vite/Tailwind, GitHub Actions.
 - **Kiến thức:** K1 (LLM API, token, chi phí: B2; prompt caching: B7), K2/K3 (loop, budget, termination, middleware: B3), K4 (skill catalog: B4), logging (B11).
 - **DoD:** `make up` cho WordPress ở `:8080`, API ở `:8000`, web ở `:5173`; agent "hello" (`create_agent` + `HarnessMiddleware` + 1 tool) chạy được cả với DeepSeek lẫn mock, sinh trace JSONL và hiện cost; smoke test gọi được Jina embed, rerank, reader và Gemini grounding (bỏ qua nếu thiếu key); CI xanh (CI không dùng key thật, chỉ chạy mock và cache).
+- **Trạng thái (24/10/2026): xong phần code, còn 2 mục chưa kiểm được.** Chi tiết: `docs/architecture.md`.
+  - ✅ Agent hello chạy với mock và DeepSeek thật (`deepseek-chat`, GOAL, 512 token trúng prompt cache, khoảng 0,0004 USD), trace JSONL có cost.
+  - ✅ Smoke test Jina: embed, rerank, reader, search đều PASS. Gemini bỏ qua vì chưa có `GEMINI_API_KEY`.
+  - ✅ 49 test offline, ruff, pyright 0 lỗi; frontend `tsc`, vitest 7/7, `vite build`; chạy đầu-cuối web → API → SSE với DeepSeek.
+  - ⏳ `make up` (WordPress :8080): máy chưa có Docker nên chưa chạy thử `docker-compose.yml`.
+  - ⏳ CI xanh: chỉ biết sau khi push lên GitHub.
+  - Khác kế hoạch: tài khoản đăng nhập seed từ biến môi trường, chưa dùng SQLModel (để Phase 6 khi cần lưu run và duyệt); bản dự phòng cho Jina Reader/Search (trafilatura, ddgs) và snapshot cache chuyển sang Phase 2; chưa thêm profile SearXNG, Phoenix trong docker compose (tuỳ chọn); agent hello dùng tool máy tính thay vì dữ kiện Tallyo để không bịa số liệu thương hiệu.
 
 ### Phase 2: Knowledge Harness, RAG tiếng Việt (23/10–31/10, TV2 chính; làm trên branch `feature/rag`, đồng thời là BTVN B6)
 

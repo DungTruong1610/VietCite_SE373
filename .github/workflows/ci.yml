@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop, "feature/**", "bugfix/**"]
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend (ruff, pyright, pytest offline)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      GEO_OFFLINE: "true"  # CI never calls real APIs and never has keys
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        run: pip install uv==0.13.5
+      - name: Install dependencies (locked)
+        run: uv sync --frozen
+      - name: Ruff lint
+        run: uv run ruff check .
+      - name: Ruff format check
+        run: uv run ruff format --check .
+      - name: Pyright
+        run: uv run pyright
+      - name: Pytest (offline, mock model)
+        run: uv run pytest -q
+
+  secrets:
+    name: Secret scan (gitleaks, full history)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+  frontend:
+    name: Frontend (only when the internal UI package is available)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Explain skip
+        if: hashFiles('packages/cnma-react-ui-*.tgz') == ''
+        run: |
+          echo "::notice::Frontend build skipped: packages/cnma-react-ui-1.1.4.tgz is an internal package and is never committed (ADR 0002). Run 'npm run typecheck && npm test && npm run build' locally before opening a PR."
+      - uses: actions/setup-node@v4
+        if: hashFiles('packages/cnma-react-ui-*.tgz') != ''
+        with:
+          node-version: "22"
+      - name: Build and test
+        if: hashFiles('packages/cnma-react-ui-*.tgz') != ''
+        working-directory: frontend
+        run: |
+          npm ci --legacy-peer-deps
+          npm run typecheck
+          npm test
+          npm run build

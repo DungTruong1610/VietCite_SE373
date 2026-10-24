@@ -45,7 +45,19 @@ docs/
 
 ## Lệnh
 
-Sẽ bổ sung từ Phase 1 (`make up`, `make test`, `make eval`, `make lint`). Hiện tại:
+Chạy từ gốc repo (Git Bash trên Windows cũng được; `uv` gọi qua `python -m uv`):
+
+```bash
+make test        # pytest offline (mock) + vitest
+make lint        # ruff check + format check
+make typecheck   # pyright + tsc
+make hello       # agent hello, MODE=live để dùng DeepSeek
+make test-live   # gọi API thật, tốn ít tiền; chỉ chạy khi cần
+```
+
+Code mới trong `backend/geo/` phải có test offline trong `backend/tests/`; không test nào được cần key thật trừ thư mục `tests/live/` (marker `live`). Đối tượng giữ secret phải khai báo `field(repr=False)`.
+
+Khác:
 
 ```bash
 pre-commit run --all-files
