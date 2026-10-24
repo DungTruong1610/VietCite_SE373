@@ -37,6 +37,7 @@ backend/evals/reports/tmp/
 # Test artifacts
 playwright-report/
 test-results/
+tools/sitegen/tests/_artifacts/
 
 # OS / IDE
 .DS_Store
