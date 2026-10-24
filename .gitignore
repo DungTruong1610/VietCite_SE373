@@ -33,6 +33,7 @@ chroma/
 .cache/
 fixtures/snapshots/raw/
 backend/evals/reports/tmp/
+backend/.data/
 
 # Test artifacts
 playwright-report/

@@ -1,0 +1,10 @@
+# Build context for frontend/Dockerfile is the repo root. Keep secrets and heavy folders out.
+.env
+.env.*
+.git
+.claude
+**/node_modules
+**/.venv
+backend/.data
+fixtures/snapshots/raw
+frontend/dist

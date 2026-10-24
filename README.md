@@ -42,7 +42,16 @@ node scripts/check-ui-package.mjs
 
 Chi tiết về gói UI: [packages/README.md](packages/README.md) và [ADR 0002](docs/adr/0002-company-ui-library.md).
 
-Lệnh chạy hệ thống (`make up`, `make test`…) sẽ có từ Phase 1.
+### Chạy hệ thống (Phase 1)
+
+```bash
+make install          # backend (uv) + frontend (npm); cần gói UI ở packages/
+make test             # test offline: mock model, không cần key
+make hello            # agent hello trên mock;  make hello MODE=live → DeepSeek
+make api              # API http://localhost:8000   (terminal khác: make web → http://localhost:5173)
+```
+
+Đăng nhập web cần `SEED_EDITOR_PASSWORD`, `SEED_APPROVER_PASSWORD` (và nên có `JWT_SECRET`) trong `.env`. Chi tiết module, API, biến môi trường: [docs/architecture.md](docs/architecture.md).
 
 ### Website demo Tallyo
 

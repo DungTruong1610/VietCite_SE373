@@ -1,0 +1,23 @@
+# Permission policy (harness layer "permission"). Reviewed like code: every change needs a PR.
+#
+# default: verdict for a tool that is NOT in the agent's allowlist (least privilege → deny)
+# agents.<name>.tools: the only tools that agent may call
+# rules: verdict for a tool whatever the agent (allow | ask | deny)
+#   ask  → the run pauses for a human decision (interrupt) or stops with NEEDS_HUMAN
+#   deny → always refused, even if an allowlist mentions it
+
+default: deny
+
+agents:
+  hello:
+    tools: [calculate]
+
+rules:
+  # Publishing is irreversible: always a human decision (UC8, Phase 6).
+  - tool: wp_publish_post
+    verdict: ask
+    reason: "Publishing to WordPress cannot be undone; an Approver must approve this exact version."
+  # No agent may send data to arbitrary URLs (exfiltration, Buổi 7 Code Mode traps).
+  - tool: http_post
+    verdict: deny
+    reason: "Sending data to external URLs is forbidden."
