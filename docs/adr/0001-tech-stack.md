@@ -17,7 +17,7 @@ Thư mục cha của repo có bộ rule viết cho SAP CAP/TypeScript. Bộ rule
 | Backend, agent | Python 3.13, LangChain 1.x `create_agent` + middleware, LangGraph 1.x (checkpoint SQLite), FastAPI |
 | LLM | DeepSeek (chính), Gemini (judge và probe có Google Search, tuỳ chọn) |
 | Retrieval | Jina embeddings v3, Jina reranker v2 multilingual, Chroma, BM25 + underthesea |
-| Frontend | React 19, Vite, TypeScript strict, Tailwind v4, shadcn/ui |
+| Frontend | React 19, Vite, TypeScript strict, Tailwind v4, ~~shadcn/ui~~ `@cnma/react-ui` (thay đổi theo [ADR 0002](0002-company-ui-library.md)) |
 | CMS | WordPress local (Docker) + MCP server tự viết (FastMCP) |
 | Chất lượng | pytest (mock model, chạy offline), ruff, pyright, Playwright, GitHub Actions, pre-commit + gitleaks |
 

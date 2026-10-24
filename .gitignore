@@ -44,3 +44,6 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# Company UI library tarball (@cnma/react-ui): internal package, shared privately, never committed
+packages/*.tgz

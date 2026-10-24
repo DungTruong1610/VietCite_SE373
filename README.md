@@ -17,7 +17,7 @@ Bài viết chỉ xuất bản lên WordPress **local**, gắn nhãn "demo học
 
 ## Kiến trúc tóm tắt
 
-- **Web:** React 19 + Vite + TypeScript + Tailwind v4 (`frontend/`), FastAPI (`backend/app/`).
+- **Web:** React 19 + Vite + TypeScript + Tailwind v4 + thư viện UI `@cnma/react-ui` (`frontend/`), FastAPI (`backend/app/`).
 - **Agent:** Python 3.13, LangChain 1.x `create_agent`, LangGraph (checkpoint SQLite, interrupt chờ người duyệt).
 - **API ngoài:** DeepSeek (LLM chính), Jina (embedding, rerank, reader, search), Gemini (tuỳ chọn: probe có Google Search, judge).
 - **Xuất bản:** WordPress local qua MCP server tự viết, chỉ nhận lệnh publish kèm approval token.
@@ -34,7 +34,13 @@ git checkout develop
 cp .env.example .env          # điền key thật vào .env, KHÔNG commit
 pip install pre-commit
 pre-commit install            # bắt buộc: chặn commit có API key
+
+# Frontend cần gói UI nội bộ (không có trong repo): xin TV1 file cnma-react-ui-1.1.4.tgz,
+# đặt vào packages/ rồi kiểm tra:
+node scripts/check-ui-package.mjs
 ```
+
+Chi tiết về gói UI: [packages/README.md](packages/README.md) và [ADR 0002](docs/adr/0002-company-ui-library.md).
 
 Lệnh chạy hệ thống (`make up`, `make test`…) sẽ có từ Phase 1.
 
@@ -56,6 +62,7 @@ Lệnh chạy hệ thống (`make up`, `make test`…) sẽ có từ Phase 1.
 - **Conventional Commits:** `feat(rag): ...`, `fix(ui): ...`, `docs: ...`.
 - Mỗi PR dưới 400 dòng, có ít nhất 1 người khác review.
 - **Không bao giờ commit `.env` hay API key.** Pre-commit chạy gitleaks để chặn.
+- **Không commit `packages/*.tgz`** (thư viện UI nội bộ, chỉ chia sẻ trong nhóm).
 
 ## Nhóm
 

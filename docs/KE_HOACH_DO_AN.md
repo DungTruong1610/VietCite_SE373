@@ -236,14 +236,14 @@ flowchart LR
 | Schema           | `jsonschema` + `pyld` + `extruct` (đọc lại JSON-LD từ HTML WordPress)                                                                                                                                                                                      | Sensor computational                                                                                                                                                    |
 | MCP              | `mcp` (FastMCP) cho server, `langchain-mcp-adapters` cho client                                                                                                                                                                                                  | Kiến thức B10                                                                                                                                                         |
 | Backend          | FastAPI, Uvicorn, `sse-starlette`, SQLModel + SQLite, `langgraph-checkpoint-sqlite`                                                                                                                                                                              |                                                                                                                                                                         |
-| Frontend         | React 19, Vite, TypeScript strict, **Tailwind v4**, shadcn/ui, TanStack Query, React Router, **@xyflow/react** (đồ thị pipeline), Recharts, react-markdown, react-diff-viewer                                                                         | Theo quy chuẩn frontend trong `.claude/rules`                                                                                                                        |
+| Frontend         | React 19, Vite, TypeScript strict, **Tailwind v4**, **`@cnma/react-ui`** (thư viện UI của công ty, file `.tgz` local, không commit: ADR 0002), TanStack Query, React Router, **@xyflow/react** (đồ thị pipeline), Recharts, react-markdown, react-diff-viewer                                                                         | Theo quy chuẩn frontend trong `.claude/rules`                                                                                                                        |
 | CMS              | WordPress 6 + MariaDB (Docker), REST API + Application Password (`WP_ENVIRONMENT_TYPE=local`), mu-plugin in JSON-LD từ post meta                                                                                                                                  | WordPress lọc thẻ `<script>` trong nội dung nên phải in qua `wp_head`                                                                                          |
 | Thống kê       | numpy, scipy (bootstrap, Wilcoxon)                                                                                                                                                                                                                                   |                                                                                                                                                                         |
 | Observability    | Trace JSONL tự viết (port từ B3/B4) + Arize Phoenix local (tuỳ chọn, OpenInference)                                                                                                                                                                             | Không cần key                                                                                                                                                         |
 | Test/CI          | pytest (offline với mock model), ruff, pyright, Playwright (E2E và ảnh chụp), GitHub Actions, pre-commit + gitleaks                                                                                                                                              |                                                                                                                                                                         |
 | Báo cáo        | LaTeX (XeLaTeX/Tectonic) theo mẫu B2/B3                                                                                                                                                                                                                             |                                                                                                                                                                         |
 
-> **Ghi chú về `.claude/rules`:** các rule ở thư mục cha viết cho SAP CAP/TypeScript. Đồ án môn này dùng **backend Python** vì toàn bộ lab LangChain/LangGraph của môn là Python. **Frontend vẫn theo đúng rule** (React 19, Vite, TS strict, Tailwind v4). Các rule về CHANGELOG, docs, Conventional Commits và GitFlow vẫn áp dụng. Quyết định này ghi vào `docs/adr/0001-tech-stack.md`.
+> **Ghi chú về `.claude/rules`:** các rule ở thư mục cha viết cho SAP CAP/TypeScript. Đồ án môn này dùng **backend Python** vì toàn bộ lab LangChain/LangGraph của môn là Python; **không dùng SAP CAP**. Frontend dùng thư viện UI `@cnma/react-ui` theo design guideline của công ty (cập nhật 24/10/2026, xem `docs/adr/0002-company-ui-library.md`). **Frontend vẫn theo đúng rule** (React 19, Vite, TS strict, Tailwind v4). Các rule về CHANGELOG, docs, Conventional Commits và GitFlow vẫn áp dụng. Quyết định này ghi vào `docs/adr/0001-tech-stack.md`.
 
 ### 4.7. Áp dụng kiến thức Buổi 7: memory, context và chi phí
 
@@ -303,7 +303,9 @@ Do An/
 │  └─ tests/         # unit/, integration/ (mock LLM), e2e/
 ├─ skills/           # geo-writing/, brand-voice-tallyo/, brand-voice-lamvien/, fact-check/, schema-markup/, vi-editorial/
 ├─ fixtures/         # snapshots/ (trang web đã cache), brands/tallyo/site/, brands/lamvien/site/ (website mock), legal/ (văn bản pháp luật đã snapshot)
-├─ frontend/         # React app
+├─ frontend/         # React app (component từ @cnma/react-ui)
+├─ packages/         # cnma-react-ui-1.1.4.tgz (local, không commit) + README.md
+├─ scripts/          # check-ui-package.mjs (kiểm tra gói UI có mặt và đúng SHA-256)
 ├─ wordpress/mu-plugins/geo-jsonld.php
 ├─ docs/             # KE_HOACH_DO_AN.md (bản này), TONG_QUAN_MON_HOC_VA_YEU_CAU_DO_AN.md, architecture.md, k-matrix.md, use-cases/UC1..UC8.md, adr/, eval-report.md, ai-usage.md, runbook.md, demo-script.md
 └─ report/           # LaTeX báo cáo cuối kỳ
@@ -464,7 +466,7 @@ Do An/
   - FastAPI: `/health`, đăng nhập (JWT, 2 vai trò, user seed), endpoint SSE demo.
   - React: layout, router, trang đăng nhập, theme.
   - `docker-compose.yml`: WordPress (`WP_ENVIRONMENT_TYPE=local`) với MariaDB, api, web; SearXNG chỉ là profile tuỳ chọn.
-  - CI GitHub Actions: ruff, pyright, pytest offline, gitleaks, build frontend.
+  - CI GitHub Actions: ruff, pyright, pytest offline, gitleaks; build frontend **chỉ khi có gói UI** (CI không có file `.tgz` nội bộ nên bỏ qua và ghi log; build frontend bắt buộc chạy ở máy trước khi mở PR).
 - **Công nghệ:** uv, LangChain/LangGraph, langchain-openai, langchain-google-genai, google-genai, httpx, FastAPI, sse-starlette, SQLModel, Docker Compose, React/Vite/Tailwind, GitHub Actions.
 - **Kiến thức:** K1 (LLM API, token, chi phí: B2; prompt caching: B7), K2/K3 (loop, budget, termination, middleware: B3), K4 (skill catalog: B4), logging (B11).
 - **DoD:** `make up` cho WordPress ở `:8080`, API ở `:8000`, web ở `:5173`; agent "hello" (`create_agent` + `HarnessMiddleware` + 1 tool) chạy được cả với DeepSeek lẫn mock, sinh trace JSONL và hiện cost; smoke test gọi được Jina embed, rerank, reader và Gemini grounding (bỏ qua nếu thiếu key); CI xanh (CI không dùng key thật, chỉ chạy mock và cache).
@@ -586,7 +588,7 @@ Do An/
   7. Traces & Eval: timeline từng run, token và cost, báo cáo eval.
   8. Settings: model, budget, xem policy.
 - Kèm Playwright E2E cho luồng chính và chụp ảnh tự động phục vụ báo cáo (bạn đã làm ở B2, B3).
-- **Công nghệ:** React 19, Vite, TS strict, Tailwind v4, shadcn/ui, TanStack Query, @xyflow/react, Recharts, react-markdown, react-diff-viewer, Playwright.
+- **Công nghệ:** React 19, Vite, TS strict, Tailwind v4, `@cnma/react-ui` (có sẵn `DataTable`, `FilterBar`, `Dialog`…), TanStack Query, @xyflow/react, Recharts, react-markdown, react-diff-viewer, Playwright.
 - **Kiến thức:** human approval UX (B11), observability (hiển thị trace).
 - **DoD:** luồng "tạo bài → duyệt → publish → xem visibility" làm trọn trên UI; build không lỗi type; E2E pass.
 
@@ -707,6 +709,7 @@ Ngoài ra còn: **trajectory eval** trên trace (thứ tự sự kiện hợp l�
 | Quy định thuế thay đổi trong lúc làm đồ án                                         | Dữ liệu lỗi thời                    | Metadata `effective_date`/`status`; fact-checker đánh `outdated`; ghi ngày snapshot trong báo cáo                                                                                                                 |
 | LLM không tất định làm eval dao động                                                  | Kết quả khó tái lập                | Cache phản hồi, nhiều seed, báo cáo phương sai và CI                                                                                                                                                                 |
 | Compaction làm mất ràng buộc hoặc evidence                                              | Bài viết sai yêu cầu, thiếu nguồn | Structured checkpoint thay cho tóm tắt tự do; KEEP cứng ràng buộc và evidence_ids; test làm tiếp từ checkpoint                                                                                                     |
+| Thư viện UI nội bộ `@cnma/react-ui` không có trên máy thành viên hoặc trên CI | Không chạy hoặc không build được frontend | File `.tgz` gửi trực tiếp cho thành viên, `node scripts/check-ui-package.mjs` kiểm SHA-256; CI bỏ qua build frontend khi thiếu gói; build và Playwright chạy ở máy trước khi mở PR; không commit `.tgz` vào repo public |
 | Code Mode chạy code do model sinh (nếu làm)                                               | Rò rỉ secret, treo máy               | Docker `--network none`, không mount `.env`, timeout, giới hạn tool call, output cap, permission ở proxy; trễ hạn thì cắt Code Mode đầu tiên                                                                  |
 
 ---
