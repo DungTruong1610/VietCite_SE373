@@ -440,7 +440,7 @@ Do An/
 - **Mục đích:** cả nhóm hiểu cùng một bức tranh; repo đúng chuẩn từ commit đầu để không bao giờ lộ key; khung tài liệu cho giám khảo có sẵn ngay.
 - **Input:** ảnh đề tài, barem, slide B1–B6, kế hoạch này.
 - **Output:**
-  - Repo GitHub **private** trong `Do An/` theo GitFlow (`main`, `develop`, `feature/*`).
+  - Repo GitHub [VietCite_SE373](https://github.com/DungTruong1610/VietCite_SE373) (**public**, nhóm chốt 24/10/2026) trong `Do An/` theo GitFlow (`main`, `develop`, `feature/*`). Vì repo public nên càng phải giữ kỷ luật không commit key: gitleaks ở pre-commit và CI, không đưa tài liệu không được phép công khai vào repo.
   - `.gitignore` (có `.env`, `.venv`, `node_modules`, `fixtures/snapshots/raw`), `.env.example`.
   - `.pre-commit-config.yaml` (gitleaks, ruff); `README.md` khung; `AGENTS.md` (repo dễ đọc cho agent, theo TH5); `CHANGELOG.md`.
   - `docs/k-matrix.md`, `docs/use-cases/UC1..8.md` (khung scorecard và tiêu chí chấp nhận), `docs/adr/0001-tech-stack.md`.
