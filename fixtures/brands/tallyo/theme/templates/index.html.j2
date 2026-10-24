@@ -1,0 +1,38 @@
+{% extends "base.html.j2" %}
+{% block main %}
+<article class="page-article">
+{{ ui.page_head(page, crumbs, updated) }}
+<section class="section listing" aria-label="{{ page.h1 }}">
+  <div class="container">
+    <div class="card-grid">
+      {% if page.listing == "features" %}
+      {% for f in facts.features %}
+      <article class="card">
+        <span class="card-icon">{{ icon(f.icon, 28) }}</span>
+        <h2><a class="stretched" href="{{ f.page if f.page != page.path else '#' ~ (f.name | slugify) }}">{{ f.name }}</a></h2>
+        <p>{{ f.summary }}</p>
+        <p class="plan-tags" aria-label="Có trong các gói">
+          {% for code in f.plans %}<span class="tag">{{ plans[facts.plan(code).key].name }}</span>{% endfor %}
+        </p>
+      </article>
+      {% endfor %}
+      {% else %}
+      {% for child in site.children(page.path) %}
+      <article class="card post-card">
+        {% if child.meta.icon %}<span class="card-icon">{{ icon(child.meta.icon, 28) }}</span>{% endif %}
+        {% if child.meta.published %}<time datetime="{{ child.meta.published.isoformat() }}">{{ child.meta.published | date_vi }}</time>{% endif %}
+        <h2><a class="stretched" href="{{ child.meta.path }}">{{ child.meta.h1 }}</a></h2>
+        <p>{{ child.meta.summary }}</p>
+        <span class="more" aria-hidden="true">{{ "Đọc bài" if child.meta.published else "Xem hướng dẫn" }} {{ icon("arrow-right", 16) }}</span>
+      </article>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% if body.strip() %}
+    <div class="prose after-grid">{{ body | safe }}</div>
+    {% endif %}
+  </div>
+</section>
+</article>
+{% if page.cta %}{{ ui.cta_section() }}{% endif %}
+{% endblock %}

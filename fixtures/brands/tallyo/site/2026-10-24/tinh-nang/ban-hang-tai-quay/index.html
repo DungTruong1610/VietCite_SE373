@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bán hàng tại quầy và quản lý kho với Tallyo</title>
+<meta name="description" content="Tính tiền bằng mã vạch, nhận tiền qua mã VietQR, in hoá đơn ra máy in nhiệt và theo dõi tồn kho trên điện thoại. Tallyo vẫn bán được khi mất mạng.">
+<link rel="canonical" href="http://localhost:8081/tinh-nang/ban-hang-tai-quay/">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="generator" content="sitegen (VietCite Studio)">
+<link rel="preload" href="/assets/fonts/montserrat-vietnamese-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-vietnamese-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trang chủ",
+          "item": "http://localhost:8081/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tính năng",
+          "item": "http://localhost:8081/tinh-nang/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bán hàng tại quầy và quản lý kho",
+          "item": "http://localhost:8081/tinh-nang/ban-hang-tai-quay/"
+        }
+      ]
+    }
+  ]
+}
+</script></head>
+<body>
+<a class="skip-link" href="#noi-dung">Bỏ qua, tới nội dung chính</a>
+<aside class="demo-notice" aria-label="Thông báo thương hiệu giả lập" data-nosnippet>
+  <div class="container">
+    <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg>
+    <p>Tallyo là thương hiệu giả lập phục vụ đồ án SE373 (UIT). Sản phẩm, giá và số liệu công ty trên trang này không có thật.</p>
+  </div>
+</aside>
+<header class="site-header">
+  <div class="container">
+    <a class="brand-link" href="/" aria-label="Tallyo, về trang chủ">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="9" y1="9" x2="9" y2="23"/>
+    <line x1="13.5" y1="9" x2="13.5" y2="23"/>
+    <line x1="18" y1="9" x2="18" y2="23"/>
+    <line x1="22.5" y1="9" x2="22.5" y2="23"/>
+    <line x1="6.5" y1="20" x2="25.5" y2="12"/>
+  </g>
+</svg>
+      <span class="brand-name">Tallyo</span>
+    </a>
+    <nav aria-label="Điều hướng chính">
+      <ul class="nav-tabs">
+        <li><a href="/tinh-nang/" aria-current="page">Tính năng</a></li>
+        <li><a href="/bang-gia/">Bảng giá</a></li>
+        <li><a href="/huong-dan/">Hướng dẫn</a></li>
+        <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+    <details class="mobile-nav">
+      <summary><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg> Menu</summary>
+      <nav aria-label="Điều hướng trên điện thoại">
+        <ul>
+          <li><a href="/tinh-nang/" aria-current="page">Tính năng</a></li>
+          <li><a href="/bang-gia/">Bảng giá</a></li>
+          <li><a href="/huong-dan/">Hướng dẫn</a></li>
+          <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/lien-he/#dung-thu">Dùng thử 15 ngày</a></li>
+        </ul>
+      </nav>
+    </details>
+    <a class="btn btn-primary btn-sm header-cta" href="/lien-he/#dung-thu">Dùng thử 15 ngày</a>
+  </div>
+</header>
+<main id="noi-dung">
+<article class="page-article">
+<section class="page-head">
+  <div class="container">
+    <nav class="crumbs" aria-label="Đường dẫn">
+  <ol>
+<li><a href="/">Trang chủ</a></li><li><a href="/tinh-nang/">Tính năng</a></li><li aria-current="page">Bán hàng tại quầy và quản lý kho</li>  </ol>
+</nav>
+<p class="eyebrow">Tính năng</p>    <h1>Bán hàng tại quầy và quản lý kho</h1>
+<p class="lead">Màn hình tính tiền của Tallyo làm cho những quầy đông khách lúc tan tầm. Mọi đơn bán đều trừ kho và vào sổ ngay.</p>    <p class="page-meta">
+      <span><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /> </svg> Cập nhật <time datetime="2026-10-24">24/10/2026</time></span>
+    </p>
+  </div>
+</section>
+<div class="container">
+  <div class="doc-layout has-toc">
+    <div class="prose">
+      <p>Tallyo chạy trên điện thoại Android, iPhone, máy tính bảng và trình duyệt. Bạn không cần mua máy bán hàng riêng: một chiếc điện thoại và máy in nhiệt đang có thường là đủ để bắt đầu.</p>
+<h2 id="tinh-tien-nhanh-bang-ma-vach-hoac-cham-chon-mon">Tính tiền nhanh bằng mã vạch hoặc chạm chọn món</h2>
+<p>Với tiệm tạp hoá, bạn quét mã vạch in sẵn trên sản phẩm bằng camera điện thoại hoặc máy quét. Với quán cà phê, bạn chạm chọn món trên màn hình, thêm ghi chú như &quot;ít đá&quot; hay &quot;mang đi&quot;.</p>
+<ul>
+<li>Tìm mặt hàng theo tên, mã vạch hoặc mã bạn tự đặt.</li>
+<li>Giảm giá theo đơn hoặc theo món; mỗi lần giảm giá ghi tên nhân viên thực hiện.</li>
+<li>Tách đơn, gộp đơn và lưu đơn tạm khi khách chưa thanh toán.</li>
+</ul>
+<h2 id="nhan-tien-qua-ma-vietqr">Nhận tiền qua mã VietQR</h2>
+<p>Khi khách chọn chuyển khoản, Tallyo hiện mã VietQR có sẵn số tiền của đơn. Khách quét bằng ứng dụng ngân hàng, bạn không phải đọc số tài khoản hay số tiền. Đơn vẫn ghi nhận cả tiền mặt và thẻ, để cuối ngày bạn đối chiếu theo từng hình thức thanh toán.</p>
+<h2 id="may-in-va-may-quet-dung-duoc">Máy in và máy quét dùng được</h2>
+<p>Tallyo không bán phần cứng. Bạn dùng thiết bị phổ thông đang có trên thị trường:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Bảng, cuộn ngang nếu không đủ chỗ"><table>
+<thead>
+<tr>
+<th>Thiết bị</th>
+<th>Tallyo hỗ trợ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Máy in hoá đơn</td>
+<td>máy in nhiệt khổ 58 mm, máy in nhiệt khổ 80 mm</td>
+</tr>
+<tr>
+<td>Kết nối máy in</td>
+<td>Bluetooth, USB, mạng nội bộ (LAN)</td>
+</tr>
+<tr>
+<td>Máy quét mã vạch</td>
+<td>máy quét mã vạch USB, máy quét mã vạch Bluetooth</td>
+</tr>
+<tr>
+<td>Thiết bị chạy Tallyo</td>
+<td>Android 9 trở lên, iOS 15 trở lên, trình duyệt Chrome, Edge, Safari bản mới</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="quan-ly-kho">Quản lý kho</h2>
+<p>Tính năng quản lý kho có trong gói Cửa hàng và gói Chuỗi.</p>
+<ul>
+<li><strong>Nhập hàng:</strong> quét mã vạch từng thùng hoặc tải phiếu nhập từ file Excel.</li>
+<li><strong>Cảnh báo sắp hết:</strong> đặt mức tồn tối thiểu cho từng mặt hàng, Tallyo nhắc khi chạm mức.</li>
+<li><strong>Kiểm kho bằng điện thoại:</strong> đi dọc kệ quét mã, Tallyo so số đếm với số trên sổ và ghi lại chênh lệch.</li>
+</ul>
+<h2 id="ban-khi-mat-mang">Bán khi mất mạng</h2>
+<p>Bán và in hoá đơn khi mất mạng; hoá đơn điện tử được gửi lên khi có mạng lại. Khi có mạng lại, Tallyo đồng bộ đơn hàng và kho theo đúng thứ tự thời gian bán.</p>
+<h2 id="tallyo-co-ban-may-in-khong">Tallyo có bán máy in không?</h2>
+<p>Không. Tallyo chỉ cung cấp phần mềm. Nếu bạn đang có máy in nhiệt khổ 58 mm hoặc 80 mm, hãy thử kết nối trong thời gian dùng thử 15 ngày trước khi mua thiết bị mới.</p>
+
+
+    </div>
+    <aside class="toc" aria-label="Mục lục trang">
+      <p>Trong trang này</p>
+      <ol>
+        <li><a href="#tinh-tien-nhanh-bang-ma-vach-hoac-cham-chon-mon">Tính tiền nhanh bằng mã vạch hoặc chạm chọn món</a></li>
+        <li><a href="#nhan-tien-qua-ma-vietqr">Nhận tiền qua mã VietQR</a></li>
+        <li><a href="#may-in-va-may-quet-dung-duoc">Máy in và máy quét dùng được</a></li>
+        <li><a href="#quan-ly-kho">Quản lý kho</a></li>
+        <li><a href="#ban-khi-mat-mang">Bán khi mất mạng</a></li>
+        <li><a href="#tallyo-co-ban-may-in-khong">Tallyo có bán máy in không?</a></li>
+      </ol>
+    </aside>
+  </div>
+</div>
+</article>
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-copy">
+        <p class="eyebrow">Bắt đầu hôm nay</p>
+        <h2 id="cta-title">Thử Tallyo ở cửa hàng của bạn</h2>
+        <p>Dùng thử gói Cửa hàng miễn phí 15 ngày, không cần thẻ thanh toán. Hết hạn dùng thử, bạn chọn gói hoặc dừng; dữ liệu được giữ 30 ngày.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-white" href="/lien-he/#dung-thu">Dùng thử 15 ngày</a>
+        <a class="btn btn-outline-white" href="/bang-gia/">Xem bảng giá</a>
+      </div>
+    </div>
+  </div>
+</section></main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand-link" href="/"><svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="9" y1="9" x2="9" y2="23"/>
+    <line x1="13.5" y1="9" x2="13.5" y2="23"/>
+    <line x1="18" y1="9" x2="18" y2="23"/>
+    <line x1="22.5" y1="9" x2="22.5" y2="23"/>
+    <line x1="6.5" y1="20" x2="25.5" y2="12"/>
+  </g>
+</svg><span class="brand-name">Tallyo</span></a>
+        <p>Bán nhanh tại quầy, xuất hoá đơn đúng quy định, sổ sách gọn gàng.</p>
+        <p>Liên hệ: <a href="mailto:hotro@tallyo.example">hotro@tallyo.example</a></p>
+      </div>
+      <div>
+        <h2>Sản phẩm</h2>
+        <ul>
+          <li><a href="/tinh-nang/">Tính năng</a></li>
+          <li><a href="/tinh-nang/hoa-don-dien-tu/">Hoá đơn điện tử</a></li>
+          <li><a href="/tinh-nang/ban-hang-tai-quay/">Bán hàng tại quầy</a></li>
+          <li><a href="/bang-gia/">Bảng giá</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="/huong-dan/">Hướng dẫn</a></li>
+          <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/lien-he/">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Công ty</h2>
+        <ul>
+          <li><a href="/gioi-thieu/">Về Tallyo</a></li>
+          <li><a href="/chinh-sach/dieu-khoan-su-dung/">Điều khoản sử dụng</a></li>
+          <li><a href="/chinh-sach/bao-mat/">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Công ty TNHH Phần mềm Tallyo. Công ty và sản phẩm là giả lập, phục vụ đồ án SE373 (UIT).</p>
+      <p>Trang cập nhật ngày <time datetime="2026-10-24">24/10/2026</time>. Font Montserrat và Inter (SIL OFL), biểu tượng Lucide (ISC).</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

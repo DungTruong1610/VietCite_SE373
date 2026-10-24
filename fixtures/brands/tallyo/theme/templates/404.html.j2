@@ -1,0 +1,18 @@
+{% extends "base.html.j2" %}
+{% block title %}Không tìm thấy trang | {{ brand.name }}{% endblock %}
+{% block meta %}
+<meta name="description" content="Trang bạn tìm không có trên website {{ brand.name }}.">
+{% endblock %}
+{% block jsonld %}{% endblock %}
+{% block main %}
+<section class="container not-found" aria-labelledby="khong-tim-thay">
+  <p class="eyebrow">Lỗi 404</p>
+  <h1 id="khong-tim-thay">Không tìm thấy trang</h1>
+  <p class="lead">Đường dẫn có thể đã đổi hoặc bị gõ sai. Bạn thử một trong các trang sau.</p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="/">Về trang chủ</a>
+    <a class="btn btn-ghost" href="/bang-gia/">Bảng giá</a>
+    <a class="btn btn-ghost" href="/huong-dan/">Hướng dẫn</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tallyo: bán hàng và hoá đơn điện tử cho hộ kinh doanh</title>
+<meta name="description" content="Tallyo giúp hộ kinh doanh tính tiền tại quầy, xuất hoá đơn điện tử từ máy tính tiền và tự lập sổ sách. Dùng thử 15 ngày, không cần thẻ.">
+<link rel="canonical" href="http://localhost:8081/">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="generator" content="sitegen (VietCite Studio)">
+<link rel="preload" href="/assets/fonts/montserrat-vietnamese-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-vietnamese-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "http://localhost:8081/#organization",
+      "name": "Tallyo",
+      "legalName": "Công ty TNHH Phần mềm Tallyo",
+      "url": "http://localhost:8081/",
+      "email": "hotro@tallyo.example",
+      "foundingDate": "2023",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "TP. Hồ Chí Minh",
+        "addressCountry": "VN"
+      },
+      "description": "Phần mềm quản lý bán hàng và hoá đơn điện tử. Thương hiệu giả lập phục vụ đồ án SE373 (UIT)."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "http://localhost:8081/#website",
+      "name": "Tallyo",
+      "url": "http://localhost:8081/",
+      "inLanguage": "vi",
+      "publisher": {
+        "@id": "http://localhost:8081/#organization"
+      }
+    }
+  ]
+}
+</script></head>
+<body>
+<a class="skip-link" href="#noi-dung">Bỏ qua, tới nội dung chính</a>
+<aside class="demo-notice" aria-label="Thông báo thương hiệu giả lập" data-nosnippet>
+  <div class="container">
+    <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg>
+    <p>Tallyo là thương hiệu giả lập phục vụ đồ án SE373 (UIT). Sản phẩm, giá và số liệu công ty trên trang này không có thật.</p>
+  </div>
+</aside>
+<header class="site-header">
+  <div class="container">
+    <a class="brand-link" href="/" aria-label="Tallyo, về trang chủ">
+      <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="9" y1="9" x2="9" y2="23"/>
+    <line x1="13.5" y1="9" x2="13.5" y2="23"/>
+    <line x1="18" y1="9" x2="18" y2="23"/>
+    <line x1="22.5" y1="9" x2="22.5" y2="23"/>
+    <line x1="6.5" y1="20" x2="25.5" y2="12"/>
+  </g>
+</svg>
+      <span class="brand-name">Tallyo</span>
+    </a>
+    <nav aria-label="Điều hướng chính">
+      <ul class="nav-tabs">
+        <li><a href="/tinh-nang/">Tính năng</a></li>
+        <li><a href="/bang-gia/">Bảng giá</a></li>
+        <li><a href="/huong-dan/">Hướng dẫn</a></li>
+        <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </nav>
+    <details class="mobile-nav">
+      <summary><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg> Menu</summary>
+      <nav aria-label="Điều hướng trên điện thoại">
+        <ul>
+          <li><a href="/tinh-nang/">Tính năng</a></li>
+          <li><a href="/bang-gia/">Bảng giá</a></li>
+          <li><a href="/huong-dan/">Hướng dẫn</a></li>
+          <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/lien-he/#dung-thu">Dùng thử 15 ngày</a></li>
+        </ul>
+      </nav>
+    </details>
+    <a class="btn btn-primary btn-sm header-cta" href="/lien-he/#dung-thu">Dùng thử 15 ngày</a>
+  </div>
+</header>
+<main id="noi-dung">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="badge-pill"><svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 17V7" /> <path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8" /> <path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" /> </svg> Hoá đơn điện tử khởi tạo từ máy tính tiền</p>
+      <h1 id="hero-title">Tính tiền xong là có <span class="accent">hoá đơn điện tử</span></h1>
+      <p class="lead">Bán nhanh tại quầy, xuất hoá đơn đúng quy định, sổ sách gọn gàng. Tallyo dành cho tiệm tạp hoá, quán cà phê và shop nhỏ đang chuyển từ ghi sổ tay sang bán hàng và kê khai đúng quy định.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/lien-he/#dung-thu">Dùng thử 15 ngày <svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></a>
+        <a class="btn btn-ghost" href="/bang-gia/">Xem bảng giá</a>
+      </div>
+      <p class="hero-note"><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /> </svg> Dùng thử 15 ngày, không cần thẻ thanh toán</p>
+    </div>
+    <div class="hero-visual">
+<svg class="mockup" viewBox="0 0 500 472" role="img" aria-labelledby="mockup-title" xmlns="http://www.w3.org/2000/svg">
+  <title id="mockup-title">Minh hoạ màn hình bán hàng của Tallyo và tờ hoá đơn điện tử in từ máy tính tiền</title>
+  <defs>
+    <filter id="receipt-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <!-- Khung trình duyệt -->
+  <rect x="0.5" y="0.5" width="420" height="360" rx="14" fill="#FFFFFF" stroke="#EBEBEB"/>
+  <path d="M0.5 14.5 a14 14 0 0 1 14 -14 h392 a14 14 0 0 1 14 14 v21 h-420 z" fill="#FFF0F0"/>
+  <circle cx="20" cy="18" r="4.5" fill="#EBEBEB"/><circle cx="34" cy="18" r="4.5" fill="#EBEBEB"/><circle cx="48" cy="18" r="4.5" fill="#EBEBEB"/>
+  <rect x="70" y="9" width="270" height="18" rx="9" fill="#FFFFFF"/>
+  <text x="84" y="22" font-size="10" fill="#666666">app.tallyo.example/ban-hang</text>
+  <!-- Màn bán hàng -->
+  <text class="m-head" x="22" y="64" font-size="15" fill="#1A1A1A">Bán hàng · Quầy 1</text>
+  <rect x="300" y="50" width="98" height="22" rx="11" fill="#E8F5F0"/>
+  <text x="313" y="65" font-size="10" fill="#0F6E56">Đang có mạng</text>
+  <line x1="22" y1="84" x2="398" y2="84" stroke="#EBEBEB"/>
+  <text x="22" y="110" font-size="12.5" fill="#1A1A1A">Nước suối 500 ml</text>
+  <text x="22" y="125" font-size="10.5" fill="#666666">2 × 6.000</text>
+  <text x="398" y="116" font-size="12.5" fill="#1A1A1A" text-anchor="end">12.000</text>
+  <text x="22" y="144" font-size="12.5" fill="#1A1A1A">Mì ly</text>
+  <text x="22" y="159" font-size="10.5" fill="#666666">4 × 9.000</text>
+  <text x="398" y="150" font-size="12.5" fill="#1A1A1A" text-anchor="end">36.000</text>
+  <text x="22" y="178" font-size="12.5" fill="#1A1A1A">Sữa tươi hộp 1 lít</text>
+  <text x="22" y="193" font-size="10.5" fill="#666666">1 × 38.000</text>
+  <text x="398" y="184" font-size="12.5" fill="#1A1A1A" text-anchor="end">38.000</text>
+  <text x="22" y="212" font-size="12.5" fill="#1A1A1A">Bánh quy hộp</text>
+  <text x="22" y="227" font-size="10.5" fill="#666666">1 × 41.000</text>
+  <text x="398" y="218" font-size="12.5" fill="#1A1A1A" text-anchor="end">41.000</text>
+  <line x1="22" y1="252" x2="398" y2="252" stroke="#EBEBEB"/>
+  <text class="m-head" x="22" y="278" font-size="13" fill="#1A1A1A">Tổng cộng</text>
+  <text class="m-head" x="398" y="279" font-size="18" fill="#C00000" text-anchor="end">127.000</text>
+  <rect x="22" y="298" width="182" height="40" rx="20" fill="#C00000"/>
+  <text class="m-head" x="113" y="323" font-size="12.5" fill="#FFFFFF" text-anchor="middle">Thanh toán VietQR</text>
+  <rect x="214" y="298" width="184" height="40" rx="20" fill="#FFFFFF" stroke="#EBEBEB"/>
+  <text class="m-head" x="306" y="323" font-size="12.5" fill="#1A1A1A" text-anchor="middle">Tiền mặt</text>
+  <!-- Hoá đơn in từ máy tính tiền -->
+  <g filter="url(#receipt-shadow)" transform="translate(286 150) rotate(3)">
+    <path d="M0 0 H200 V290 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 l-10 10 l-10 -10 Z" fill="#FFFFFF"/>
+    <text class="m-head" x="100" y="28" font-size="12" fill="#1A1A1A" text-anchor="middle">TẠP HOÁ MINH AN</text>
+    <text x="100" y="44" font-size="8.5" fill="#666666" text-anchor="middle">Hoá đơn điện tử khởi tạo từ máy tính tiền</text>
+    <line x1="14" y1="56" x2="186" y2="56" stroke="#1A1A1A" stroke-dasharray="3 3"/>
+    <text x="14" y="74" font-size="8.5" fill="#1A1A1A">Nước suối 500 ml</text>
+    <text x="186" y="74" font-size="8.5" fill="#1A1A1A" text-anchor="end">12.000</text>
+    <text x="14" y="90" font-size="8.5" fill="#1A1A1A">Mì ly</text>
+    <text x="186" y="90" font-size="8.5" fill="#1A1A1A" text-anchor="end">36.000</text>
+    <text x="14" y="106" font-size="8.5" fill="#1A1A1A">Sữa tươi hộp 1 lít</text>
+    <text x="186" y="106" font-size="8.5" fill="#1A1A1A" text-anchor="end">38.000</text>
+    <text x="14" y="122" font-size="8.5" fill="#1A1A1A">Bánh quy hộp</text>
+    <text x="186" y="122" font-size="8.5" fill="#1A1A1A" text-anchor="end">41.000</text>
+    <line x1="14" y1="138" x2="186" y2="138" stroke="#1A1A1A" stroke-dasharray="3 3"/>
+    <text class="m-head" x="14" y="156" font-size="10" fill="#1A1A1A">Tổng cộng</text>
+    <text class="m-head" x="186" y="156" font-size="10" fill="#1A1A1A" text-anchor="end">127.000</text>
+    <text x="14" y="176" font-size="7.5" fill="#666666">Mã tra cứu (minh hoạ, không có thật):</text>
+    <text x="14" y="188" font-size="7.5" fill="#1A1A1A">DEMO-TALLYO-000127</text>
+    <g color="#1A1A1A"><g transform="translate(68 198) scale(1.5610)"><path class="qrline" stroke="#1a1a1a" d="M0 0.5h7m2 0h2m1 0h1m1 0h2m2 0h2m1 0h4m2 0h1m1 0h3m2 0h7m-41 1h1m5 0h1m2 0h3m2 0h1m1 0h2m2 0h1m2 0h2m2 0h1m2 0h1m3 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h2m1 0h1m1 0h2m2 0h5m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h2m3 0h3m3 0h2m2 0h1m1 0h1m1 0h4m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h3m2 0h2m5 0h1m2 0h1m3 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m1 0h1m2 0h1m1 0h1m2 0h1m2 0h3m2 0h1m2 0h2m2 0h2m1 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-32 1h1m1 0h3m2 0h3m2 0h1m4 0h1m2 0h2m-31 1h1m2 0h1m1 0h2m1 0h2m5 0h2m4 0h1m1 0h6m1 0h1m2 0h1m1 0h1m-34 1h2m3 0h1m2 0h1m1 0h2m1 0h1m4 0h2m2 0h2m2 0h2m2 0h3m4 0h2m-40 1h1m1 0h1m1 0h3m1 0h2m1 0h3m3 0h2m2 0h1m1 0h3m1 0h2m1 0h4m1 0h4m-38 1h2m3 0h2m1 0h1m3 0h2m5 0h2m2 0h4m2 0h1m1 0h2m1 0h1m1 0h2m-40 1h1m1 0h3m1 0h1m1 0h1m3 0h1m2 0h2m3 0h4m1 0h1m2 0h2m1 0h1m2 0h1m5 0h1m-41 1h1m2 0h2m2 0h1m7 0h1m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m4 0h1m-40 1h2m1 0h6m2 0h2m1 0h1m1 0h4m2 0h2m3 0h2m3 0h1m2 0h3m2 0h1m-41 1h6m1 0h5m2 0h5m1 0h2m1 0h1m1 0h2m1 0h4m3 0h1m3 0h1m-36 1h4m1 0h3m1 0h5m2 0h3m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m3 0h1m-39 1h1m2 0h2m1 0h3m1 0h1m2 0h2m1 0h1m3 0h1m1 0h2m1 0h1m1 0h1m4 0h3m1 0h1m1 0h2m-39 1h5m1 0h1m1 0h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m3 0h5m-41 1h2m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m2 0h1m4 0h1m1 0h1m1 0h1m3 0h2m2 0h2m1 0h1m2 0h2m-40 1h1m1 0h2m1 0h1m1 0h3m1 0h1m2 0h3m4 0h1m3 0h5m2 0h3m2 0h2m-40 1h1m1 0h1m2 0h1m3 0h4m2 0h1m1 0h1m3 0h4m3 0h3m3 0h2m1 0h2m-38 1h4m1 0h2m2 0h2m1 0h2m1 0h1m1 0h2m2 0h1m1 0h1m5 0h2m1 0h7m-37 1h1m3 0h1m2 0h2m1 0h1m1 0h2m1 0h1m1 0h3m2 0h4m3 0h1m1 0h1m3 0h1m-38 1h3m1 0h3m1 0h2m3 0h1m1 0h3m1 0h2m2 0h2m3 0h1m2 0h3m1 0h1m2 0h2m-39 1h2m3 0h4m2 0h3m1 0h1m1 0h3m2 0h1m4 0h5m5 0h1m-40 1h2m4 0h1m1 0h1m1 0h3m2 0h3m3 0h4m3 0h2m4 0h4m2 0h1m-38 1h1m1 0h1m2 0h1m4 0h1m2 0h4m1 0h3m1 0h3m1 0h3m1 0h1m1 0h1m3 0h1m-39 1h2m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h2m2 0h1m1 0h1m2 0h1m2 0h6m2 0h1m1 0h1m2 0h1m-38 1h2m4 0h1m5 0h1m1 0h1m1 0h4m1 0h4m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m-39 1h1m2 0h5m2 0h2m3 0h1m1 0h1m5 0h2m1 0h1m2 0h1m1 0h3m2 0h1m1 0h3m-39 1h2m4 0h1m2 0h3m2 0h2m3 0h2m1 0h1m2 0h3m1 0h2m2 0h1m4 0h1m-41 1h1m1 0h1m2 0h2m1 0h2m2 0h2m1 0h1m5 0h1m2 0h3m1 0h1m1 0h7m1 0h1m-31 1h1m1 0h3m1 0h1m2 0h1m6 0h2m2 0h1m2 0h2m3 0h1m1 0h3m-41 1h7m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m1 0h2m2 0h2m2 0h1m2 0h1m1 0h1m1 0h2m1 0h1m-40 1h1m5 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h4m-40 1h1m1 0h3m1 0h1m5 0h2m4 0h1m5 0h1m1 0h1m1 0h1m3 0h5m3 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m1 0h3m1 0h2m3 0h1m2 0h1m1 0h1m1 0h6m1 0h1m-41 1h1m1 0h3m1 0h1m3 0h1m5 0h2m2 0h1m2 0h4m1 0h2m6 0h5m-41 1h1m5 0h1m3 0h2m1 0h1m1 0h1m4 0h3m1 0h4m1 0h1m1 0h2m2 0h1m3 0h1m-40 1h7m1 0h1m1 0h4m1 0h7m1 0h2m1 0h1m2 0h1m2 0h2m1 0h1m1 0h1m1 0h1"/></g></g>
+    <text x="100" y="278" font-size="7.5" fill="#666666" text-anchor="middle">Quét mã để tra cứu hoá đơn</text>
+  </g>
+</svg>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="tru-cot">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Tallyo làm gì</p>
+      <h2 id="tru-cot">Bốn việc Tallyo làm thay bạn</h2>
+      <p class="lead">Mỗi việc trước đây bạn làm bằng tay, ghi vào sổ hoặc nhập lại vào Excel cuối ngày.</p>
+    </div>
+    <div class="pillars">
+      <article class="card">
+        <span class="card-icon"><svg class="icon" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M3 7V5a2 2 0 0 1 2-2h2" /> <path d="M17 3h2a2 2 0 0 1 2 2v2" /> <path d="M21 17v2a2 2 0 0 1-2 2h-2" /> <path d="M7 21H5a2 2 0 0 1-2-2v-2" /> <path d="M8 7v10" /> <path d="M12 7v10" /> <path d="M17 7v10" /> </svg></span>
+        <h3><a class="stretched" href="/tinh-nang/ban-hang-tai-quay/">Bán hàng tại quầy</a></h3>
+        <p>Quét mã vạch hoặc chạm chọn món, in hoá đơn ra máy in nhiệt, nhận tiền qua mã VietQR.</p>
+        <span class="more" aria-hidden="true">Xem chi tiết <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+      </article>
+      <article class="card">
+        <span class="card-icon"><svg class="icon" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 17V7" /> <path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8" /> <path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" /> </svg></span>
+        <h3><a class="stretched" href="/tinh-nang/hoa-don-dien-tu/">Hoá đơn điện tử từ máy tính tiền</a></h3>
+        <p>Mỗi lần tính tiền tạo một hoá đơn điện tử khởi tạo từ máy tính tiền, khách quét mã QR để tra cứu.</p>
+        <span class="more" aria-hidden="true">Xem chi tiết <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+      </article>
+      <article class="card">
+        <span class="card-icon"><svg class="icon" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /> <path d="M12 22V12" /> <polyline points="3.29 7 12 12 20.71 7" /> <path d="m7.5 4.27 9 5.15" /> </svg></span>
+        <h3><a class="stretched" href="/tinh-nang/ban-hang-tai-quay/#quan-ly-kho">Quản lý kho</a></h3>
+        <p>Bán đến đâu trừ kho đến đó. Sắp hết hàng thì Tallyo nhắc, kiểm kho bằng điện thoại.</p>
+        <span class="more" aria-hidden="true">Xem chi tiết <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+      </article>
+      <article class="card">
+        <span class="card-icon"><svg class="icon" width="28" height="28" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 5v16" /> <path d="m16 12 2 2 4-4" /> <path d="M22 6V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2h4.001A2 2 0 0022 17v-1.344" /> </svg></span>
+        <h3><a class="stretched" href="/tinh-nang/#so-sach-ho-kinh-doanh">Sổ sách hộ kinh doanh</a></h3>
+        <p>Sổ doanh thu và chi phí tự lập từ dữ liệu bán hàng, xuất Excel khi cần kê khai.</p>
+        <span class="more" aria-hidden="true">Xem chi tiết <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="so-sanh">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Trước và sau</p>
+      <h2 id="so-sanh">Ghi sổ tay và dùng Tallyo khác nhau thế nào</h2>
+      <p class="lead">So sánh cách một tiệm tạp hoá làm việc hằng ngày khi ghi sổ tay hoặc Excel, và khi dùng Tallyo.</p>
+    </div>
+    <div class="compare-wrap" tabindex="0" role="region" aria-label="Bảng so sánh, cuộn ngang nếu không đủ chỗ">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col"><span><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /> </svg> Sổ tay hoặc Excel</span></th>
+            <th scope="col"><span><svg class="icon" width="20" height="20" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="m16 9-5.5 5.5L8 12" /> </svg> Dùng Tallyo</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bad"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg><span>Cuối ngày cộng sổ bằng máy tính bỏ túi, lệch vài chục nghìn là phải dò lại từng trang.</span></span></td>
+            <td class="good"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg><span>Doanh thu cộng tự động sau mỗi đơn, xem theo ngày, tuần, tháng.</span></span></td>
+          </tr>
+          <tr>
+            <td class="bad"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg><span>Khách xin hoá đơn thì phải hẹn hôm sau, mở phần mềm khác để nhập lại.</span></span></td>
+            <td class="good"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg><span>Hoá đơn điện tử tạo ngay lúc tính tiền, in kèm mã QR để khách tra cứu.</span></span></td>
+          </tr>
+          <tr>
+            <td class="bad"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg><span>Hết hàng mới biết vì kệ trống.</span></span></td>
+            <td class="good"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg><span>Tallyo nhắc khi một mặt hàng xuống dưới mức tồn bạn đặt.</span></span></td>
+          </tr>
+          <tr>
+            <td class="bad"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg><span>Nhân viên bán, chủ không biết ai huỷ đơn, ai giảm giá.</span></span></td>
+            <td class="good"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg><span>Mỗi nhân viên một tài khoản, mọi lần huỷ và giảm giá đều có tên người làm.</span></span></td>
+          </tr>
+          <tr>
+            <td class="bad"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg><span>Đến kỳ kê khai phải gom sổ, hoá đơn giấy và tin nhắn chuyển khoản.</span></span></td>
+            <td class="good"><span><svg class="icon" width="18" height="18" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > <path d="M20 6 9 17l-5-5" /> </svg><span>Sổ doanh thu, chi phí lập sẵn từ dữ liệu bán hàng, xuất Excel trong vài phút.</span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="con-so">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Thông tin nhanh</p>
+      <h2 id="con-so">Vài con số về Tallyo</h2>
+    </div>
+    <div class="metrics">
+      <article class="metric">
+        <p class="metric-value">15 ngày</p>
+        <h3 class="metric-label">Dùng thử miễn phí</h3>
+        <p>Dùng thử đủ tính năng của gói Cửa hàng, không cần thẻ thanh toán.</p>
+      </article>
+      <article class="metric">
+        <p class="metric-value">99.000 đ</p>
+        <h3 class="metric-label">Giá mỗi tháng từ</h3>
+        <p>Gói Khởi đầu cho hộ kinh doanh một cửa hàng. Trả theo năm bằng giá 10 tháng.</p>
+      </article>
+      <article class="metric">
+        <p class="metric-value">3.200+</p>
+        <h3 class="metric-label">Hộ kinh doanh đang dùng</h3>
+        <p>Số liệu giả lập tính đến 01/10/2026.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="bat-dau">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Bắt đầu</p>
+      <h2 id="bat-dau">Bắt đầu trong 4 bước</h2>
+      <p class="lead">Phần lớn cửa hàng bắt đầu bán được ngay trong buổi đầu tiên.</p>
+    </div>
+    <ol class="timeline">
+      <li>
+        <span class="step-num" aria-hidden="true">1</span>
+        <div class="step-card">
+          <h3><span class="visually-hidden">Bước 1: </span>Tạo tài khoản</h3>
+          <p>Đăng ký bằng số điện thoại hoặc email, chọn loại hình kinh doanh.</p>
+          <span class="tag">Bạn làm</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">2</span>
+        <div class="step-card">
+          <h3><span class="visually-hidden">Bước 2: </span>Nhập mặt hàng</h3>
+          <p>Quét mã vạch có sẵn trên sản phẩm hoặc tải danh sách từ file Excel.</p>
+          <span class="tag">Bạn làm</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">3</span>
+        <div class="step-card">
+          <h3><span class="visually-hidden">Bước 3: </span>Kết nối máy in</h3>
+          <p>Tallyo tự tìm máy in nhiệt khổ 58 mm hoặc 80 mm qua Bluetooth, USB hoặc mạng nội bộ.</p>
+          <span class="tag tag-green">Tallyo làm</span>
+        </div>
+      </li>
+      <li>
+        <span class="step-num" aria-hidden="true">4</span>
+        <div class="step-card">
+          <h3><span class="visually-hidden">Bước 4: </span>Bán đơn đầu tiên</h3>
+          <p>Tính tiền, in hoá đơn, xem đơn hiện ngay trong báo cáo doanh thu của ngày.</p>
+          <span class="tag">Bạn làm</span>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-copy">
+        <p class="eyebrow">Bắt đầu hôm nay</p>
+        <h2 id="cta-title">Thử Tallyo ở cửa hàng của bạn</h2>
+        <p>Dùng thử gói Cửa hàng miễn phí 15 ngày, không cần thẻ thanh toán. Hết hạn dùng thử, bạn chọn gói phù hợp hoặc dừng; dữ liệu được giữ 30 ngày.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-white" href="/lien-he/#dung-thu">Dùng thử 15 ngày</a>
+        <a class="btn btn-outline-white" href="/bang-gia/">Xem bảng giá</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand-link" href="/"><svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <rect x="1" y="1" width="30" height="30" rx="9" fill="currentColor"/>
+  <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+    <line x1="9" y1="9" x2="9" y2="23"/>
+    <line x1="13.5" y1="9" x2="13.5" y2="23"/>
+    <line x1="18" y1="9" x2="18" y2="23"/>
+    <line x1="22.5" y1="9" x2="22.5" y2="23"/>
+    <line x1="6.5" y1="20" x2="25.5" y2="12"/>
+  </g>
+</svg><span class="brand-name">Tallyo</span></a>
+        <p>Bán nhanh tại quầy, xuất hoá đơn đúng quy định, sổ sách gọn gàng.</p>
+        <p>Liên hệ: <a href="mailto:hotro@tallyo.example">hotro@tallyo.example</a></p>
+      </div>
+      <div>
+        <h2>Sản phẩm</h2>
+        <ul>
+          <li><a href="/tinh-nang/">Tính năng</a></li>
+          <li><a href="/tinh-nang/hoa-don-dien-tu/">Hoá đơn điện tử</a></li>
+          <li><a href="/tinh-nang/ban-hang-tai-quay/">Bán hàng tại quầy</a></li>
+          <li><a href="/bang-gia/">Bảng giá</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Hỗ trợ</h2>
+        <ul>
+          <li><a href="/huong-dan/">Hướng dẫn</a></li>
+          <li><a href="/hoi-dap/">Hỏi đáp</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/lien-he/">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Công ty</h2>
+        <ul>
+          <li><a href="/gioi-thieu/">Về Tallyo</a></li>
+          <li><a href="/chinh-sach/dieu-khoan-su-dung/">Điều khoản sử dụng</a></li>
+          <li><a href="/chinh-sach/bao-mat/">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Công ty TNHH Phần mềm Tallyo. Công ty và sản phẩm là giả lập, phục vụ đồ án SE373 (UIT).</p>
+      <p>Trang cập nhật ngày <time datetime="2026-10-24">24/10/2026</time>. Font Montserrat và Inter (SIL OFL), biểu tượng Lucide (ISC).</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
