@@ -1,0 +1,21 @@
+title = "VietCite gitleaks config"
+
+# Giữ toàn bộ rule mặc định (đã có Google API key AIza...), thêm rule cho key DeepSeek và Jina.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "deepseek-api-key"
+description = "DeepSeek / OpenAI-style secret key (sk-...)"
+regex = '''\bsk-[A-Za-z0-9]{20,}\b'''
+keywords = ["sk-"]
+
+[[rules]]
+id = "jina-api-key"
+description = "Jina AI API key (jina_...)"
+regex = '''\bjina_[A-Za-z0-9_-]{30,}\b'''
+keywords = ["jina_"]
+
+[allowlist]
+description = "Files that only document key formats"
+paths = ['''\.env\.example$''']

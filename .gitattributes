@@ -1,0 +1,7 @@
+# Giữ LF trong repo để cả nhóm (Windows, macOS, Linux) không bị diff do xuống dòng
+* text=auto eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.pdf binary
